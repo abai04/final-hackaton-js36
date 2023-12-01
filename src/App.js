@@ -9,7 +9,6 @@ const App = () => {
     <div>
       <NavigationBar/>
       <MainRoutes/>
-      <UserRegister/>
     </div>
   );
 };
