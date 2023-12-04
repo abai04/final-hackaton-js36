@@ -36,7 +36,7 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav.Link className='me-3' onClick={() => navigate("/products")}>Еда</Nav.Link>
-            <Nav.Link onClick={() => navigate("/job")}>Курьерская служба</Nav.Link>
+            <Nav.Link onClick={() => navigate("/job")}>Курьерская службаа</Nav.Link>
             {currentUser ? (
               <Button className='ms-auto' variant='success' onClick={handleLogout}>{currentUser} Logout</Button> 
             ) : (

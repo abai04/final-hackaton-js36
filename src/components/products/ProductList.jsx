@@ -12,7 +12,7 @@ const ProductList = () => {
     },[])
     return (
         <Container>
-            {productList.map((item) => <ProductCard item={item}/>)}
+            {productList.map((item) => <ProductCard key={item.id} item={item}/>)}
         </Container>
     );
 };
