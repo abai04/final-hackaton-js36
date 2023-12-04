@@ -2,52 +2,45 @@ import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Link } from 'react-router-dom';
 
-function UserLogin() {
-  const [show, setShow] = useState(false);
+function UserLogin(props) {
+  const {showLogin, setShowLogin, setShowReg} = props
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShowLogin(false);
+
+  const handleTransition = () => {
+    handleClose()
+    setShowReg(true)
+  }
 
   return (
     <>
-      <Button variant='light' style={{width: "100%", textAlign: "start"}} onClick={handleShow}>
-        Войти
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={showLogin} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Войдите на свой аккаунт</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
+        <Form.Label>Эл-почта</Form.Label>
+        <Form.Control type="email" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Label>Пароль</Form.Label>
+        <Form.Control type="password"  />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
       <Button variant="primary" type="submit">
-        Submit
+        Отправить
       </Button>
     </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          <Button onClick={handleTransition} variant='outline-primary'>У меня нет аккаунта</Button>
         </Modal.Footer>
       </Modal>
     </>

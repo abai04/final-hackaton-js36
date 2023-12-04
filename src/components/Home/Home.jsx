@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import RegisterUserAdmin from "../RegisterCtg/RegisterUserAdmin";
 import './Home.css';
 import cart from '../assets/cart.png';
 import delivery from '../assets/delivery.svg';
@@ -87,6 +88,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <RegisterUserAdmin />
     </div>
   );
 };
