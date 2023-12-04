@@ -27,7 +27,12 @@ function NavigationBar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand onClick={() => navigate("/")}>React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand
+          style={{ color: "green", fontSize: "800" }}
+          onClick={() => navigate("/")}
+        >
+          Kurultai
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav.Link className='me-3' onClick={() => navigate("/products")}>Еда</Nav.Link>
