@@ -5,13 +5,14 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import UserLogin from "../UserAuth/UserLogin";
 import UserRegister from "../UserAuth/UserRegister";
+import { Button } from "react-bootstrap";
 
 function NavigationBar() {
   const [show, setShow] = useState("false");
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="/ ">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav.Link href="/">Home</Nav.Link>

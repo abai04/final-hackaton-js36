@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.menu_dev {
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f7f9;
+    width: 90%;
+    border-radius: 20px;
+    margin: auto;
+    height: 350px;
+    align-items: stretch;
+}
+
+.menu_dev h2 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.menu_title {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px;
+}
+
+.menu_title img {
+    width: 100px;
+    height: 100px;
+}
+
+.menu_app {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu_app img {
+    width: 200px;
+    height: 200px;
+}
