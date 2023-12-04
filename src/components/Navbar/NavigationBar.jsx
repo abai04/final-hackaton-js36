@@ -6,16 +6,17 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import UserLogin from '../UserAuth/UserLogin';
 import UserRegister from '../UserAuth/UserRegister';
 import { Button, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NavigationBar() {
+  const navigate = useNavigate()
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand onClick={() => navigate("/")}>React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-            <Nav.Link href="#home">Еда</Nav.Link>
+            <Nav.Link onClick={() => navigate("/products")}>Еда</Nav.Link>
             <Nav.Link style={{marginLeft: "20px"}} href="#link">Курьерская служба</Nav.Link>
             <NavDropdown className='ms-auto' title="Авторизация">
               <UserLogin/>
