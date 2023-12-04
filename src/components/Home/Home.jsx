@@ -7,6 +7,9 @@ import european from "../assets/european.jpeg";
 import appstore from "../assets/appstore.svg";
 import playg from "../assets/playg.svg";
 import phone from "../assets/phone.png";
+import curier1 from "../assets/curier1.png";
+import curier2 from "../assets/curier2.png";
+import curier3 from "../assets/curier3.png";
 import { Carousel } from "react-bootstrap";
 
 const Home = () => {
@@ -102,7 +105,16 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      <div className="foot_dev">
+        <h3>Kurultai для курьеров</h3>
+        <p>Удобный график, вы сами выбирайте когда приступать к работе. Стабильный
+        заработок, еженедельные выплаты. Отслеживайте свой рейтинг</p>
+        <div>
+          <img src={curier1} alt="err" />
+          <img src={curier2} alt="err" />
+          <img src={curier3} alt="err" />
+        </div>
+      </div>
     </div>
   );
 };
