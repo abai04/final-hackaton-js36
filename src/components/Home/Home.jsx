@@ -1,5 +1,4 @@
 import React from "react";
-import RegisterUserAdmin from "../RegisterCtg/RegisterUserAdmin";
 import './Home.css';
 import cart from '../assets/cart.png';
 import delivery from '../assets/delivery.svg';
@@ -10,33 +9,15 @@ import { Carousel } from 'react-bootstrap';
 const Home = () => {
   return (
     <div>
-            <div className="menu_dev">
-        <h2>Сэкономьте свое время и энергию с нашим сервисом доставки!</h2>
-        <div className="menu_title">
-          <div>
-            <img src={delivery} alt="" />
-            <h3>Лучшие рестораны вашего города</h3>
-            <p>
-              В нашем приложении — огромный выбор ресторанов. Закажите свою любимую
-              еду или откройте для себя новые рестораны поблизости!
-            </p>
-          </div>
-          <div>
-            <img src={cart} alt="" />
-            <h3>Быстрая доставка</h3>
-            <p>
-              Со скоростью молнии! Отправьте посылку или закажите доставку в черте
-              города, и получите желаемое за считанные минуты.
-            </p>
-          </div>
-          <div>
-            <img src={procent} alt="" />
-            <h3>Незабываемый день</h3>
-            <p>
-              Встречай свой особенный день в стиле настоящего гурмана! Тебя ждет
-              настоящий праздник вкуса - на расстоянии клика.
-            </p>
-          </div>
+      <div className="nav_dev">
+        <div className="nav_left">
+          <h2>Сервис доставки еды из любимых заведений</h2>
+          <p>Удобный сервис, любимые заведения, быстрая доставка, отслеживание статуса заказа и местоположения курьера. Скачивай и заказывай!</p>
+          <a href=""><img src="" alt="" /></a>
+          <a href=""><img src="" alt="" /></a>
+        </div>
+        <div className="nav_right">
+          <img src="" alt="" />
         </div>
       </div>
       <Carousel>
@@ -87,9 +68,36 @@ const Home = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <div className="menu_dev">
+          <h2>Сэкономьте свое время и энергию с нашим сервисом доставки!</h2>
+        <div className="menu_title">
+          <div>
+            <img src={delivery} alt="" />
+            <h3>Лучшие рестораны вашего города</h3>
+            <p>
+              В нашем приложении — огромный выбор ресторанов. Закажите свою любимую
+              еду или откройте для себя новые рестораны поблизости!
+            </p>
+          </div>
+          <div>
+            <img src={cart} alt="" />
+            <h3>Быстрая доставка</h3>
+            <p>
+              Со скоростью молнии! Отправьте посылку или закажите доставку в черте
+              города, и получите желаемое за считанные минуты.
+            </p>
+          </div>
+          <div>
+            <img src={procent} alt="" />
+            <h3>Незабываемый день</h3>
+            <p>
+              Встречай свой особенный день в стиле настоящего гурмана! Тебя ждет
+              настоящий праздник вкуса - на расстоянии клика.
+            </p>
+          </div>
+        </div>
+      </div>
 
-
-      <RegisterUserAdmin />
     </div>
   );
 };
