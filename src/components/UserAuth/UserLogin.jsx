@@ -1,46 +1,44 @@
 import { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, NavDropdown } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Link } from 'react-router-dom';
+import UserRegister from './UserRegister';
 
 function UserLogin(props) {
-  const {showLogin, setShowLogin, setShowReg} = props
+  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShowLogin(false);
-
-  const handleTransition = () => {
-    handleClose()
-    setShowReg(true)
-  }
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <>
-      <Modal show={showLogin} onHide={handleClose}>
-        <Modal.Header closeButton>
+    <Button style={{width: "100%"}} variant='outline-success' onClick={handleShow}>Войти</Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header style={{backgroundColor: "rgb(17, 174, 17)", color: "white"}} closeButton>
           <Modal.Title>Войдите на свой аккаунт</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" >
         <Form.Label>Эл-почта</Form.Label>
         <Form.Control type="email" />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" >
         <Form.Label>Пароль</Form.Label>
         <Form.Control type="password"  />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+      <Form.Group className="mb-3" >
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <button style={{backgroundColor: "rgb(17, 174, 17)", color: "white"}} className='btn' variant='success' type="submit">
         Отправить
-      </Button>
+      </button>
     </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleTransition} variant='outline-primary'>У меня нет аккаунта</Button>
+          <UserRegister showLogin={show} setShowLogin={setShow}/>
         </Modal.Footer>
       </Modal>
     </>
