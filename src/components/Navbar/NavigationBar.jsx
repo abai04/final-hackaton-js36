@@ -22,7 +22,10 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav.Link onClick={() => navigate("/products")}>Еда</Nav.Link>
-          <Nav.Link style={{ marginLeft: "20px" }} href="#link">
+          <Nav.Link
+            style={{ marginLeft: "20px" }}
+            onClick={() => navigate("/job")}
+          >
             Курьерская служба
           </Nav.Link>
           <NavDropdown className="ms-auto" title="Авторизация">
