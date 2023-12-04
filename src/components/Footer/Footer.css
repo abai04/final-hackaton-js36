@@ -1,0 +1,125 @@
+.footer-container {
+  background-color: #101010;
+  color: #fff;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  gap: 4rem;
+}
+
+.link-group {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.link-group h3 {
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+
+.link-group ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link-group li {
+  margin-bottom: 0.5rem;
+}
+
+.link-1,
+.link-2,
+.link-3,
+.link-4,
+.link-5,
+.link-6,
+.link-7,
+.link-8,
+.cat-1,
+.cat-2,
+.cat-3 {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  line-height: 2rem;
+  font-size: 14px;
+  color: #e4e4e4;
+}
+
+.link-1:hover,
+.link-2:hover,
+.link-3:hover,
+.link-4:hover,
+.link-5:hover,
+.link-6:hover,
+.link-7:hover,
+.link-8:hover,
+.cat-1:hover,
+.cat-2:hover,
+.cat-3:hover {
+  color: orange;
+  transition: 0.2s;
+}
+
+.footer-images {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.footer-images img {
+  width: 30px;
+  height: auto;
+  margin: 0 0.5rem;
+}
+
+.footer-links ul li,
+.footer-links h3 {
+  display: block;
+  transition: display 0.5s ease;
+}
+
+.footer-links h3 {
+  margin-bottom: 10px;
+}
+
+.ft-link li {
+  list-style-type: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ft-link2 {
+  flex-direction: column;
+  position: absolute;
+  color: #e4e4e4;
+  margin-left: 24rem;
+  width: 19rem;
+  bottom: 3rem;
+}
+.ft-link2 li {
+  list-style-type: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ft-link3 {
+  position: absolute;
+  color: #e4e4e4;
+  left: 57.5rem;
+  bottom: 3rem;
+}
+
+.ft-link3 li {
+  list-style-type: none;
+  text-align: center;
+  cursor: pointer;
+}
