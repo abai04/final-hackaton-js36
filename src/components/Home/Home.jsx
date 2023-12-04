@@ -1,30 +1,33 @@
 import React from "react";
-import './Home.css';
-import cart from '../assets/cart.png';
-import delivery from '../assets/delivery.svg';
-import procent from '../assets/procent.png';
-import european from '../assets/european.jpeg';
-import { Carousel } from 'react-bootstrap';
+import "./Home.css";
+import cart from "../assets/cart.png";
+import delivery from "../assets/delivery.svg";
+import procent from "../assets/procent.png";
+import european from "../assets/european.jpeg";
+import appstore from "../assets/appstore.svg";
+import playg from "../assets/playg.svg";
+import phone from "../assets/phone.png";
+import { Carousel } from "react-bootstrap";
 
 const Home = () => {
   return (
     <div>
       <div className="nav_dev">
         <div className="nav_left">
-          <h2>Сервис доставки еды из любимых заведений</h2>
-          <p>Удобный сервис, любимые заведения, быстрая доставка, отслеживание статуса заказа и местоположения курьера. Скачивай и заказывай!</p>
-          <a href=""><img src="" alt="" /></a>
-          <a href=""><img src="" alt="" /></a>
+          <h2>Сервис доставки еды из ресторана</h2>
+          <p>Удобный сервис, быстрая доставка, отслеживание статуса заказа и местоположения курьера. Скачивай и заказывай!</p>
+          <a href="https://apps.apple.com/kg/app/kenguroo/id1486295195"><img src={appstore} alt="appstore"/></a>
+          <a href="https://play.google.com/store/apps/details?id=kg.kenguru.app"><img src={playg} alt="playg" /></a>
         </div>
         <div className="nav_right">
-          <img src="" alt="" />
+          <img src={phone} alt="phone" />
         </div>
       </div>
       <Carousel>
         <Carousel.Item interval={1000}>
           <img
             className="d-block w-100"
-            style={{ height: '600px', objectFit: 'cover' }}
+            style={{ height: "700px", objectFit: "cover"}}
             src="https://www.advantour.com/img/kyrgyzstan/dishes/kyrgyz-dishes.jpg"
             alt="First slide"
           />
@@ -36,7 +39,7 @@ const Home = () => {
         <Carousel.Item interval={500}>
           <img
             className="d-block w-100"
-            style={{ height: '600px', objectFit: 'cover' }}
+            style={{ height: "700px", objectFit: "cover" }}
             src="https://milaclub.com/uploads/2018/06/milaclub-aziatskaya-kuhnya.jpg"
             alt="Second slide"
           />
@@ -48,7 +51,7 @@ const Home = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            style={{ height: '600px', objectFit: 'cover' }}
+            style={{ height: "700px", objectFit: "cover" }}
             src="https://too.kg/wp-content/uploads/Natsionalnye-blyuda-KR.jpg"
             alt="Third slide"
           />
@@ -59,7 +62,7 @@ const Home = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            style={{ height: '600px', objectFit: 'cover' }}
+            style={{ height: "700px", objectFit: "cover" }}
             src={european}
             alt="Third slide"
           />
@@ -69,22 +72,24 @@ const Home = () => {
         </Carousel.Item>
       </Carousel>
       <div className="menu_dev">
-          <h2>Сэкономьте свое время и энергию с нашим сервисом доставки!</h2>
+        <h2 className="menu-h">
+          Сэкономьте свое время и энергию с нашим сервисом доставки!
+        </h2>
         <div className="menu_title">
           <div>
             <img src={delivery} alt="" />
             <h3>Лучшие рестораны вашего города</h3>
             <p>
-              В нашем приложении — огромный выбор ресторанов. Закажите свою любимую
-              еду или откройте для себя новые рестораны поблизости!
+              В нашем приложении — огромный выбор ресторанов. Закажите свою
+              любимую еду или откройте для себя новые рестораны поблизости!
             </p>
           </div>
           <div>
             <img src={cart} alt="" />
             <h3>Быстрая доставка</h3>
             <p>
-              Со скоростью молнии! Отправьте посылку или закажите доставку в черте
-              города, и получите желаемое за считанные минуты.
+              Со скоростью молнии! Отправьте посылку или закажите доставку в
+              черте города, и получите желаемое за считанные минуты.
             </p>
           </div>
           <div>
