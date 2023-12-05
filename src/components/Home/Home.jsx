@@ -55,7 +55,7 @@ const Home = () => {
           <img
             className="d-block w-100"
             style={{ height: "700px", objectFit: "cover" }}
-            src="https://too.kg/wp-content/uploads/Natsionalnye-blyuda-KR.jpg"
+            src="https://nomadsland.travel/sites/default/files/styles/feature/public/2023-09/kyrgyz_dishes.jpg?h=6260a25f&itok=ppkq3Nxo"
             alt="Third slide"
           />
           <Carousel.Caption>

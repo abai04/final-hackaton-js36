@@ -51,6 +51,8 @@
 
 
 
+
+
 .menu_dev {
   display: flex;
   flex-direction: column;
@@ -100,5 +102,50 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   margin-top: 20px;
+}
+
+
+@media (max-width: 426px) {
+    .nav_dev {
+      flex-direction: column;
+    }
+
+    .nav_left h2 {
+      margin-top: 20px;
+      font-size: 20px;
+      margin-bottom: 45px; 
+    }
+
+    .nav_left p {
+      font-size: 12px;
+    }
+
+    .nav_left a{
+      display: flex;
+    }
+
+    .nav_left img {
+      width: 20%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav_right img {
+      width: 50%;
+    }
+
+    .menu_title {
+      flex-direction: column;
+    }
+
+    .carousel-item img {
+      height: auto; 
+      max-width: 100%; 
+    }
+  
+    .carousel-caption {
+      display: none;
+    }
 }
