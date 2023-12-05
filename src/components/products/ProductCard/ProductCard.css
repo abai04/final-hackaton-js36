@@ -1,0 +1,49 @@
+.custom-card {
+    width: 400px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out; 
+    
+  }
+  
+  .custom-card:hover {
+    transform: scale(1.05); 
+  }
+  
+  .custom-card-img {
+    height: 250px;
+    max-width: 100%; 
+    object-fit: cover;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    margin-bottom: 15px;
+  }
+  
+  .button-images {
+    margin-left: 30px; 
+    margin-right: 30px; 
+  }
+
+
+  
+  .button-custom {
+    width: 100%;
+    background-color: #28a745;
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .button-custom:hover {
+    background-color: #218838;
+  }
