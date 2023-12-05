@@ -23,9 +23,20 @@ export const getCategories = createAsyncThunk(
 );
 export const getProducts = createAsyncThunk('products/getProducts', async () => {
     try {
-        const result = await axios.get(`${API}/product/`+window.location.search, getConfig())
+        const result = await axios.get(`${API}/product/`+window.location.search)
         return result.data
     } catch (error) {
         throw error
     }
 })
+
+export const deleteProduct = createAsyncThunk(
+  'products/deleteProduct', async (id, thunkAPI) => {
+    try {
+      await axios.delete(`${API}/product/${id}/`, getConfig())
+      thunkAPI.dispatch(getProducts())
+    } catch (error) {
+      throw error
+    }
+  }
+)
