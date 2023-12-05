@@ -60,13 +60,13 @@
   width: 95%;
   border-radius: 20px;
   margin: auto;
-  height: 350px;
+  height: 400px;
   align-items: stretch;
   margin-top: 20px;
 }
 
 .menu_dev h2 {
-  margin-top: 20px;
+  margin-top: 40px;
   text-align: center;
 }
 
@@ -75,7 +75,8 @@
   text-align: center;
   align-items: center;
   justify-content: space-around;
-  gap: 40px;
+  margin-top: 40px;
+  gap: 60px;
 }
 
 .menu_title img {
@@ -106,6 +107,20 @@
   margin-top: 20px;
 }
 
+.foot_dev .courier-images-container {
+  display: flex;
+  justify-content: space-around; 
+  align-items: center; 
+}
+.carousel-caption {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+
+.carousel-caption h3 {
+    color: white;
+    font-size: 32px;
+    font-weight: 900;
+}
 
 @media (max-width: 426px) {
     .nav_dev {

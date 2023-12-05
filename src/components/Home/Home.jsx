@@ -11,20 +11,69 @@ import curier1 from "../assets/curier1.png";
 import curier2 from "../assets/curier2.png";
 import curier3 from "../assets/curier3.png";
 import { Carousel } from "react-bootstrap";
+import { useSpring, animated, config } from "react-spring";
+import { useInView } from "react-intersection-observer";
+
+const AnimatedDiv = animated.div;
 
 const Home = () => {
+
+  const slideInLeft = useSpring({
+    opacity: 1,
+    transform: "translateX(0%)",
+    from: { opacity: 0, transform: "translateX(-50%)" },
+    config: { tension: 100, friction: 10 },
+  });
+
+  const slideInRight = useSpring({
+    opacity: 1,
+    transform: "translateX(0%)",
+    from: { opacity: 0, transform: "translateX(50%)" },
+    config: { tension: 150, friction: 10 },
+  });
+
+  const [refTop, inViewTop] = useInView({
+    triggerOnce: true,
+  });
+
+  const [refRight, inViewRight] = useInView({
+    triggerOnce: true,
+  });
+
+  const [refLeft, inViewLeft] = useInView({
+    triggerOnce: true,
+  });
+
+  const slideInFromTop = useSpring({
+    opacity: inViewTop ? 1 : 0,
+    transform: inViewTop ? "translateY(0%)" : "translateY(-50%)",
+    config: config.slow, 
+  });
+
+  const slideInFromRight = useSpring({
+    opacity: inViewRight ? 1 : 0,
+    transform: inViewRight ? "translateX(0%)" : "translateX(50%)",
+    config: config.slow, 
+  });
+
+  const slideInFromLeft = useSpring({
+    opacity: inViewLeft ? 1 : 0,
+    transform: inViewLeft ? "translateX(0%)" : "translateX(-50%)",
+    config: config.slow, 
+  });
+
   return (
     <div>
       <div className="nav_dev">
-        <div className="nav_left">
+        <AnimatedDiv className="nav_left" style={slideInLeft}>
           <h2>Сервис доставки еды из ресторана</h2>
           <p>Удобный сервис, быстрая доставка, отслеживание статуса заказа и местоположения курьера. Скачивай и заказывай!</p>
           <a href="https://apps.apple.com/kg/app/kenguroo/id1486295195"><img src={appstore} alt="appstore"/></a>
           <a href="https://play.google.com/store/apps/details?id=kg.kenguru.app"><img src={playg} alt="playg" /></a>
-        </div>
-        <div className="nav_right">
+        </AnimatedDiv>
+        <AnimatedDiv className="nav_right" style={slideInRight}>
           <img src={phone} alt="phone" />
-        </div>
+        </AnimatedDiv>
       </div>
       <Carousel>
         <Carousel.Item interval={1000}>
@@ -43,7 +92,7 @@ const Home = () => {
           <img
             className="d-block w-100"
             style={{ height: "700px", objectFit: "cover" }}
-            src="https://milaclub.com/uploads/2018/06/milaclub-aziatskaya-kuhnya.jpg"
+            src="https://storage.delikateska.ru/2/6/313f6e94-1cd3-4d0e-87c2-9e92ccac550e.jpg"
             alt="Second slide"
           />
           <Carousel.Caption>
@@ -81,10 +130,10 @@ const Home = () => {
         <div className="menu_title">
           <div>
             <img src={delivery} alt="" />
-            <h3>Лучшие рестораны вашего города</h3>
+            <h3>Лучший ресторан вашего города</h3>
             <p>
-              В нашем приложении — огромный выбор ресторанов. Закажите свою
-              любимую еду или откройте для себя новые рестораны поблизости!
+              В нашем приложении — огромный выбор еды. Закажите свою
+              любимую еду или откройте для себя новый ресторан поблизости!
             </p>
           </div>
           <div>
@@ -105,14 +154,20 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="foot_dev">
+      <div className="foot_dev" >
         <h3>Kurultai для курьеров</h3>
         <p>Удобный график, вы сами выбирайте когда приступать к работе. Стабильный
         заработок, еженедельные выплаты. Отслеживайте свой рейтинг</p>
-        <div>
+        <div className="courier-images-container">
+        <AnimatedDiv style={slideInFromLeft} ref={refLeft}>
           <img src={curier1} alt="err" />
+        </AnimatedDiv>
+        <AnimatedDiv  style={slideInFromTop} ref={refTop}>
           <img src={curier2} alt="err" />
+        </AnimatedDiv>
+        <AnimatedDiv  style={slideInFromRight} ref={refRight}>
           <img src={curier3} alt="err" />
+        </AnimatedDiv>
         </div>
       </div>
     </div>
