@@ -17,7 +17,7 @@ export const productSlice = createSlice({
         [getProducts.fulfilled]: (state, action) => {
             state.loading = false
             state.productList = action.payload.results
-            state.pages = Math.ceil(action.payload.count / 6)
+            state.pages = Math.ceil(action.payload.count / 8)
         },
         [getProducts.pending]: (state) => {
             state.loading = true
