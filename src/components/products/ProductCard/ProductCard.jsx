@@ -1,5 +1,8 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useDispatch, useSelector } from 'react-redux';
+import { ADMIN } from '../../../helpers/consts';
+import { deleteProduct } from '../../../store/actions/productActions';
 import icon from '../image/icun.svg'
 import './ProductCard.css'
 
@@ -11,6 +14,8 @@ function ProductCard(props) {
     };
 
 
+    const dispatch = useDispatch()
+    const {currentUser} = useSelector((state) => state.auth)
   return (
     <Card className="custom-card" style={{border: '2px solid #28a745'}}>
        <Card.Body>
@@ -22,6 +27,10 @@ function ProductCard(props) {
         <Card.Text>
           {item.category}
         </Card.Text>
+        {currentUser === ADMIN ? (
+          <Button onClick={() => dispatch(deleteProduct(item.id))}  variant="primary">delete</Button>
+        ) : (null)}
+        
         <Button style={buttonStyles} className="button-custom">
           <span className="mr-2">
             <img src={icon} alt="" className="button-images"/>
