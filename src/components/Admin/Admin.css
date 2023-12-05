@@ -1,0 +1,35 @@
+.block{
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    color: white;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 30px;
+}
+.b-1{
+    background-color: green;
+    background-image: url("../assets/video-burger.png");
+    background-size: 200px;
+    background-position: right;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+.b-1:hover{
+    box-shadow: 0px 5px 5px 5px rgb(11, 48, 11);
+    font-size: 35px;
+    background-position: left;
+    background-size: 220px;
+}
+
+.b-2{
+    background-image: url("../assets/categories-of-food.jpg");
+    color: rgb(68, 65, 65);
+    transition: 0.4s;
+}
+.b-2:hover{
+    box-shadow: 0px 5px 5px 5px rgb(91, 76, 76);
+    font-size: 35px;
+    background-position: 1px;
+}

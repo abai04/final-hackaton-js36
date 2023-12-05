@@ -10,33 +10,39 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkAuth, logout } from '../../store/actions/authActions';
 import { setCurrentUser } from '../../store/slices/authSlice';
+import { ADMIN } from '../../helpers/consts';
 
 function NavigationBar() {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const {currentUser} = useSelector((state) => state.auth)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.auth);
   useEffect(() => {
-    if(localStorage.getItem('tokens')){
-      dispatch(checkAuth())
+    if (localStorage.getItem("tokens")) {
+      dispatch(checkAuth());
     }
-  }, [])
+  }, []);
   const handleLogout = () => {
     logout()
     dispatch(setCurrentUser())
+    navigate("/")
   }
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand
-          style={{ color: "green", fontSize: "800" }}
+          style={{ color: "green", fontSize: "800", cursor: "pointer" }}
           onClick={() => navigate("/")}
         >
           Kurultai
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-            <Nav.Link className='me-3' onClick={() => navigate("/products")}>Еда</Nav.Link>
-            <Nav.Link onClick={() => navigate("/job")}>Курьерская служба</Nav.Link>
+            <Nav.Link className='me-5' onClick={() => navigate("/products")}>Еда</Nav.Link>
+            <Nav.Link className='me-5' onClick={() => navigate("/job")}>Курьерская служба</Nav.Link>
+            {currentUser === ADMIN ? (
+              <Nav.Link onClick={() => navigate("/admin")}>Страница Админа</Nav.Link>
+            ) : (null) }
+            
             {currentUser ? (
               <Button className='ms-auto' variant='success' onClick={handleLogout}>{currentUser} Logout</Button> 
             ) : (
@@ -44,8 +50,7 @@ function NavigationBar() {
               <UserLogin/>
               <UserRegister/>
             </NavDropdown>
-            )}
-            
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
