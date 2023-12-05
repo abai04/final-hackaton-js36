@@ -13,14 +13,14 @@ import { setCurrentUser } from '../../store/slices/authSlice';
 import { ADMIN } from '../../helpers/consts';
 
 function NavigationBar() {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const {currentUser} = useSelector((state) => state.auth)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.auth);
   useEffect(() => {
-    if(localStorage.getItem('tokens')){
-      dispatch(checkAuth())
+    if (localStorage.getItem("tokens")) {
+      dispatch(checkAuth());
     }
-  }, [])
+  }, []);
   const handleLogout = () => {
     logout()
     dispatch(setCurrentUser())
@@ -30,7 +30,7 @@ function NavigationBar() {
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand
-          style={{ color: "green", fontSize: "800" }}
+          style={{ color: "green", fontSize: "800", cursor: "pointer" }}
           onClick={() => navigate("/")}
         >
           Kurultai
@@ -50,8 +50,7 @@ function NavigationBar() {
               <UserLogin/>
               <UserRegister/>
             </NavDropdown>
-            )}
-            
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

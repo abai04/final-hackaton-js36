@@ -20,7 +20,7 @@ const Footer = () => {
           <ul>
             <li>
               <a className="link-1" href="/aboutus">
-                Часто задаваемые вопросы
+                О нас
               </a>
             </li>
             <li>
