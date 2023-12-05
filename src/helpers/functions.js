@@ -3,7 +3,7 @@ export const getConfig = () => {
   const Authorization = `Bearer ${tokens.access}`;
 
   const config = {
-    headers: {
+    headers: { 
       Authorization,
     },
   };

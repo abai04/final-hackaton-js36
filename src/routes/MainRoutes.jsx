@@ -4,6 +4,8 @@ import HomePage from "../pages/HomePage";
 import ProductsPage from "../pages/ProductsPage";
 import CourierPage from "../pages/CourierPage";
 import JopPage from "../pages/JopPage";
+import AdminPage from "../pages/AdminPage";
+import AddProductPage from "../pages/AddProductPage";
 import AboutUsPage from "../pages/AboutUsPage";
 
 const MainRoutes = () => {
@@ -15,6 +17,8 @@ const MainRoutes = () => {
         <Route path="/job" element={<JopPage />} />
 
         <Route path="/courier" element={<CourierPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/add" element={<AddProductPage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
       </Routes>
     </div>

@@ -154,7 +154,6 @@ const AboutUsPage = () => {
           Сотрудники
         </h4>
       </div>
-      <Footer />
     </div>
   );
 };
