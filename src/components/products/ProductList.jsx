@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../../store/actions/productActions';
+import { getCategories, getProducts } from '../../store/actions/productActions';
 import ProductCard from './ProductCard/ProductCard';
-import { Container } from 'react-bootstrap';
+import { Container, Dropdown, NavDropdown } from 'react-bootstrap';
 import PaginationList from './Pagination';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const ProductList = () => {
     
-    const {productList, loading} = useSelector((state) => state.product)
+    const {productList, loading, categories} = useSelector((state) => state.product)
     const dispatch = useDispatch()
     const [searchParams, setSearchParams] = useSearchParams()
     useEffect(() => {
         dispatch(getProducts())
+        dispatch(getCategories())
     },[searchParams])
     const navigate = useNavigate()
     const filterByCategory = (query, value) => {
@@ -29,10 +30,19 @@ const ProductList = () => {
   };
     return (
         <div >
-            <Container>
-                <button onClick={() => filterByCategory("category", "pizza")}>pizza</button>
-                <button onClick={() => filterByCategory("category", "jason_born")}>all</button>
-            </Container>
+            <Dropdown style={{marginLeft: "150px"}}>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+         Категория
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item onClick={()=>filterByCategory("category", "all")}>Все</Dropdown.Item>
+        {categories.map((item) => 
+        <Dropdown.Item onClick={()=>filterByCategory("category", item.slug)}>{item.name}</Dropdown.Item>
+        )}
+      </Dropdown.Menu>
+            </Dropdown>
+
         <Container style={{display: 'flex', flexWrap: 'wrap'}}>
             {productList.map((item) => <ProductCard key={item.id} item={item}/>)}
         </Container>
