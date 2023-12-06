@@ -31,12 +31,11 @@ function ProductCard(props) {
         </Card.Text>
         {currentUser === ADMIN ? (
           <>
-          <Button onClick={() => dispatch(deleteProduct(item.id))}  variant="primary">delete</Button>
-          <Button onClick={() => navigate("/edit/" + item.id )}  variant="primary">edit</Button>
+          <Button className='w-100'  onClick={() => dispatch(deleteProduct(item.id))}  variant="danger">delete</Button>
+          <Button onClick={() => navigate("/edit/" + item.id )} className='w-100'  variant="warning">edit</Button>
           </>
-        ) : (null)}
-        
-        <Button style={buttonStyles} className="button-custom">
+        ) : (
+           <Button style={buttonStyles} className="button-custom">
           <span className="mr-2">
             <img src={icon} alt="" className="button-images"/>
           </span>
@@ -45,6 +44,9 @@ function ProductCard(props) {
             <img src={icon} alt="" className="button-images"/>
           </span>
         </Button>
+        )}
+        
+       
       </Card.Body>
     </Card>
   );
