@@ -40,3 +40,29 @@ export const deleteProduct = createAsyncThunk(
     }
   }
 )
+
+export const getOneProduct = createAsyncThunk(
+  'products/getOneProduct',
+  async (id) => {
+    try {
+      const result = await axios.get(`${API}/product/${id}/`, getConfig());
+
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+export const editProduct = createAsyncThunk( "products/editProduct", async (editedProduct) => {
+  try {
+    await axios.patch(
+      `${API}/product/${editedProduct.get('id')}/`,
+      editedProduct,
+      getConfig()
+    )
+  } catch (error) {
+    throw error
+  }
+})
+
