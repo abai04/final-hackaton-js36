@@ -7,6 +7,8 @@ import JopPage from "../pages/JopPage";
 import AdminPage from "../pages/AdminPage";
 import AddProductPage from "../pages/AddProductPage";
 import AboutUsPage from "../pages/AboutUsPage";
+import EditProduct from "../components/products/EditProduct/EditProduct";
+import CategoriesMenu from "../components/products/categories/CategoriesMenu";
 
 const MainRoutes = () => {
   return (
@@ -20,6 +22,8 @@ const MainRoutes = () => {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/add" element={<AddProductPage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
+        <Route path="/edit/:id" element={<EditProduct/>} />
+        <Route path="/categories" element={<CategoriesMenu/>} />
       </Routes>
     </div>
   );
