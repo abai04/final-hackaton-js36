@@ -129,12 +129,16 @@
 
     .nav_left h2 {
       margin-top: 20px;
-      font-size: 20px;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
       margin-bottom: 45px; 
     }
 
     .nav_left p {
-      font-size: 12px;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
     }
 
     .nav_left a{
@@ -142,13 +146,14 @@
     }
 
     .nav_left img {
-      width: 20%;
+      width: 40%;
       margin: 0;
       padding: 0;
     }
 
     .nav_right img {
-      width: 50%;
+      width: 80%;
+      margin: 0 auto; 
     }
 
     .menu_title {
@@ -156,11 +161,23 @@
     }
 
     .carousel-item img {
-      height: auto; 
-      max-width: 100%; 
+      height: 200px; 
     }
   
     .carousel-caption {
       display: none;
     }
+
+    .foot_dev .courier-images-container img:first-child,
+  .foot_dev .courier-images-container img:last-child {
+    display: none;
+  }
+
+  .menu_dev > div {
+    display: none; 
+  }
+
+  .menu_dev > div:first-child {
+    display: flex; 
+  }
 }
