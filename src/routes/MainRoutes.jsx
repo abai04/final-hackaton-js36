@@ -9,6 +9,7 @@ import AddProductPage from "../pages/AddProductPage";
 import AboutUsPage from "../pages/AboutUsPage";
 import EditProduct from "../components/products/EditProduct/EditProduct";
 import CategoriesMenu from "../components/products/categories/CategoriesMenu";
+import ProfilePage from "../pages/ProfilePage";
 
 const MainRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const MainRoutes = () => {
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/edit/:id" element={<EditProduct/>} />
         <Route path="/categories" element={<CategoriesMenu/>} />
+        <Route path="/profile" element={<ProfilePage/>} />
       </Routes>
     </div>
   );

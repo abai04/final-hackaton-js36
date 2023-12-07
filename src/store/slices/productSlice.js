@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { getCategories, getOneProduct, getProducts } from "../actions/productActions"
+import { getYourAccount } from "../actions/authActions"
 
 const initialState = {
     productList: [],
@@ -45,8 +46,8 @@ export const productSlice = createSlice({
         },
         [getOneProduct.rejected] : (state) => {
             state.loading = false
-
-        }
+        },
+        
     }
         
 })

@@ -44,6 +44,9 @@ const ProductList = () => {
             </Dropdown>
 
         <Container style={{display: 'flex', flexWrap: 'wrap'}}>
+          {productList.length === 0 ? (
+            <h1>Продуктов этой категории на данный момент нет</h1>
+          ) : (null)}
             {productList.map((item) => <ProductCard key={item.id} item={item}/>)}
         </Container>
     <Container>

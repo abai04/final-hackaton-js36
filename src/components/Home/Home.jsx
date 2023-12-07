@@ -75,7 +75,7 @@ const Home = () => {
           <img src={phone} alt="phone" />
         </AnimatedDiv>
       </div>
-      <Carousel>
+      <Carousel controls={false} indicators={false}>
         <Carousel.Item interval={1000}>
           <img
             className="d-block w-100"

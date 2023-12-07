@@ -8,7 +8,7 @@ import UserRegister from '../UserAuth/UserRegister';
 import { Button, Dropdown } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkAuth, logout } from '../../store/actions/authActions';
+import { checkAuth, getYourAccount, logout } from '../../store/actions/authActions';
 import { setCurrentUser } from '../../store/slices/authSlice';
 import { ADMIN } from '../../helpers/consts';
 
@@ -17,9 +17,7 @@ function NavigationBar() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.auth);
   useEffect(() => {
-    if (localStorage.getItem("tokens")) {
-      dispatch(checkAuth());
-    }
+    dispatch(checkAuth())
   }, []);
   const handleLogout = () => {
     logout()
@@ -44,7 +42,10 @@ function NavigationBar() {
             ) : (null) }
             
             {currentUser ? (
+              <>
               <Button className='ms-auto' variant='success' onClick={handleLogout}>{currentUser} Logout</Button> 
+              <Nav.Link onClick={() => navigate("/profile")}>Профиль</Nav.Link>
+              </>
             ) : (
               <NavDropdown className='ms-auto' title="Авторизация">
               <UserLogin/>
