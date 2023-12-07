@@ -35,7 +35,7 @@ function ProductCard(props) {
           <Button onClick={() => navigate("/edit/" + item.id )} className='w-100'  variant="warning">edit</Button>
           </>
         ) : (
-           <Button style={buttonStyles} className="button-custom">
+           <Button variant='success' style={buttonStyles} className="button-custom">
           <span className="mr-2">
             <img src={icon} alt="" className="button-images"/>
           </span>

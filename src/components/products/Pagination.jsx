@@ -27,8 +27,8 @@ const PaginationList = () => {
   }
 
   return (
-    <Pagination>
-      <Pagination.Prev onClick={() => setCurrentPage(currentPage - 1)} />
+    <Pagination >
+      <Pagination.Prev disabled={currentPage === 1 ? (true) : (false)} onClick={() => setCurrentPage(currentPage - 1)} />
       {getPagesCount().map((item) =>
         item === currentPage ? (
           <Pagination.Item
@@ -44,7 +44,8 @@ const PaginationList = () => {
           </Pagination.Item>
         )
       )}
-      <Pagination.Next onClick={() => setCurrentPage(currentPage + 1)} />
+      
+      <Pagination.Next disabled={currentPage === pages ? (true) : (false)} onClick={() => setCurrentPage(currentPage + 1)} />
     </Pagination>
   );
 };

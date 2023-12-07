@@ -1,10 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { login, register } from "../actions/authActions"
+import { createSlice, getDefaultMiddleware } from "@reduxjs/toolkit"
+import { getYourAccount, login, register } from "../actions/authActions"
 
 const initialState = {
     currentUser: localStorage.getItem('email'),
     error: null, 
-    loading: false
+    loading: false,
+    userInfo: null
 }
 
 export const authSlice = createSlice({
@@ -15,6 +16,7 @@ reducers:{
         state.currentUser = null
     }
 },
+
 extraReducers: {
     [register.pending] : (state) => {
         state.loading = true
@@ -36,8 +38,19 @@ extraReducers: {
     [login.rejected] : (state, action) => {
         state.loading = false
         state.error = action.error.message
-    }
-}})
+    },
+    [getYourAccount.fulfilled] : (state, action) => {
+            state.loading = false
+            state.userInfo = action.payload
+        },
+    [getYourAccount.pending] : (state) => {
+            state.loading = true
+    },
+    [getYourAccount.rejected] : (state) => {
+            state.loading = false
+        },
+},
+})
 
 export const {setCurrentUser} = authSlice.actions;
 export const authReducer = authSlice.reducer;
