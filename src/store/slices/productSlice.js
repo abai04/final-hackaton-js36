@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getCategories, getProducts } from "../actions/productActions"
+import { getCategories, getOneProduct, getProducts } from "../actions/productActions"
 
 const initialState = {
     productList: [],
@@ -17,7 +17,7 @@ export const productSlice = createSlice({
         [getProducts.fulfilled]: (state, action) => {
             state.loading = false
             state.productList = action.payload.results
-            state.pages = Math.ceil(action.payload.count / 6)
+            state.pages = Math.ceil(action.payload.count / 8)
         },
         [getProducts.pending]: (state) => {
             state.loading = true
@@ -33,8 +33,19 @@ export const productSlice = createSlice({
         [getCategories.pending]: (state) => {
             state.loading = true
         },
-        [getCategories.rejected]: (state, action) => {
+        [getCategories.rejected]: (state) => {
             state.loading = false
+        },
+        [getOneProduct.fulfilled] : (state, action) => {
+            state.loading = false
+            state.oneProduct = action.payload
+        },
+        [getOneProduct.pending] : (state) => {
+            state.loading = true
+        },
+        [getOneProduct.rejected] : (state) => {
+            state.loading = false
+
         }
     }
         

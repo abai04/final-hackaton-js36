@@ -8,7 +8,7 @@ const Admin = () => {
             <Link to={"/add"} style={{textDecoration:"none"}}>
                 <div className='block b-1'><p style={{textShadow: "2px 1px 1px black"}}>Добавить продукты</p></div>
                 </Link>
-            <Link style={{textDecoration:"none"}}>
+            <Link to={"/categories"} style={{textDecoration:"none"}}>
                 <div className='block b-2'>Добавить категории</div>
                 </Link>
         </Container>
