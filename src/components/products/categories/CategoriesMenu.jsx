@@ -11,7 +11,7 @@ function CategoriesMenu() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCategories())
-    }, [])
+    }, [categories.length])
     const handleAdd = () => {
         if(!category){
             alert("Заполните поле!")
@@ -22,10 +22,11 @@ function CategoriesMenu() {
         dispatch(getCategories())
     }
   return (
-    <Table style={{width: "70%", margin: "auto"}} striped bordered hover>
+    <Container style={{display: 'block'}}>
+    <Table striped bordered hover>
       <thead>
         <tr>
-          <th>slug</th>
+          <th style={{width: "20px"}}>slug</th>
           <th>Название категории</th>
           <th>Смена названия</th>
           <th>Удалить категорию</th>
@@ -38,17 +39,20 @@ function CategoriesMenu() {
                     <td>#{item.slug}</td>
                     <td>{item.name}</td>
                     <td><EditCategory item={item}/></td>
-                    <td><Button onClick={() => dispatch(deleteCategory(item.slug))}>Delete</Button></td>
+                    <td><Button variant='outline-danger' onClick={() => dispatch(deleteCategory(item.slug))}>Delete</Button></td>
                 </tr>
             ))
         }
       </tbody>
-      <h3>Добавьте новую категорию</h3>
-      <div className='d-flex'>
+      
+    </Table>
+    <h3>Добавьте новую категорию</h3>
+    <div className='d-flex w-25'>
       <Form.Control onChange={(e) => setCategory(e.target.value)} placeholder="добавить категорию"/>
       <Button onClick={handleAdd}>Добавить</Button>
       </div>
-    </Table>
+    </Container>
+    
   );
 }
 

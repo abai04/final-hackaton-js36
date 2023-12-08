@@ -31,11 +31,11 @@ const AddProduct = () => {
   };
     return (
         <Container>
-            <div style={{backgroundColor: "floralwhite"}}>
+            <div>
             <h2 style={{marginTop: "100px"}}>Добавьте новое блюдо в меню</h2>
             </div>
             
-           <Form style={{backgroundColor: "#a4ebac", boxShadow: "1px 5px 1px 1px #a4ebac"}} className='w-50'>
+           <Form style={{backgroundColor: "#a4ebac", boxShadow: "1px 10px 10px 5px #a4ebac", borderRadius: "10px"}} className='w-50'>
            <Form.Group>
             <Form.Label>Название блюда</Form.Label>
             <Form.Control onChange={(e) => setTitle(e.target.value)} value={title} type='text' className='w-50' placeholder='писать здесь'/>

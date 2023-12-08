@@ -17,6 +17,8 @@ function UserRegister(props) {
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
 
+  const [send, setSend] = useState(false)
+
   const handleClose = () => {
     if(showLogin){
       setShowLogin(false)
@@ -38,13 +40,14 @@ function UserRegister(props) {
         password,
         password_confirm: passwordConfirm
       }
+      setSend(true)
       dispatch(register(newUser))
     }
   }
 
   return (
     <>
-    <Button variant='outline-success' onClick={handleShow}>Зарегистрироваться</Button>
+    <NavDropdown.Item variant='outline-success' onClick={handleShow}>Зарегистрироваться</NavDropdown.Item>
 
       <Modal backdrop='static' show={show} onHide={handleClose}>
         <Modal.Header style={{backgroundColor: "rgb(17, 174, 17)", color: "white"}} closeButton>
@@ -74,12 +77,23 @@ function UserRegister(props) {
       <Form.Group className="mb-3" >
         <Form.Label>Пароль</Form.Label>
         <Form.Control onChange={(e) => setPassword(e.target.value)} type="password"  />
+        <Form.Text>Пароль должен состоять минимум из 8 символов</Form.Text>
       </Form.Group>
       <Form.Group className="mb-3" >
         <Form.Label>Подтвердите пароль</Form.Label>
         <Form.Control onChange={(e) => setPasswordConfirm(e.target.value)} type="password"  />
       </Form.Group>
-      <Button
+      {send ? (
+        <>
+        <Button style={{backgroundColor: "", color: "white"}} disabled  className='btn' variant='success'
+      >
+        Отправлено
+      </Button>
+      <p style={{fontSize: "15px"}}>Проверьте свою почту и активируйте аккаунт</p>
+        
+        </>
+      ) : (
+        <Button
        style={{backgroundColor: "rgb(17, 174, 17)", color: "white"}} 
        className='btn' 
        variant='success'
@@ -87,6 +101,8 @@ function UserRegister(props) {
        >
         Отправить
       </Button>
+      )}
+      
     </Form>
         </Modal.Body>
       </Modal>
