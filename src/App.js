@@ -5,7 +5,7 @@ import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
-    <div>
+    <div style={{backgroundColor: "rgb(237, 230, 220)"}}>
       <NavigationBar />
       <MainRoutes />
       <Footer />

@@ -18,7 +18,6 @@ function UserLogin(props) {
   const handleLogin = () => {
     if(!email.trim() || !password.trim()){
       alert("Заполните поля")
-      console.log(email, password);
     }else{
       const userData = {
         email,
@@ -30,7 +29,7 @@ function UserLogin(props) {
   }
   return (
     <>
-    <Button style={{width: "100%"}} variant='outline-success' onClick={handleShow}>Войти</Button>
+    <NavDropdown.Item variant='outline-success' onClick={handleShow}>Войти</NavDropdown.Item>
 
       <Modal backdrop='static' show={show} onHide={handleClose}>
         <Modal.Header style={{backgroundColor: "rgb(17, 174, 17)", color: "white"}} closeButton>
@@ -47,7 +46,7 @@ function UserLogin(props) {
         <Form.Label >Пароль</Form.Label>
         <Form.Control onChange={(e) => setPassword(e.target.value)} type="password"  />
       </Form.Group>
-      <Button style={{backgroundColor: "rgb(17, 174, 17)", color: "white"}} className='btn' variant='success'
+      <Button style={{backgroundColor: "rgb(17, 174, 17)", color: "white"}}  className='btn' variant='success'
       onClick={handleLogin}
       >
         Отправить

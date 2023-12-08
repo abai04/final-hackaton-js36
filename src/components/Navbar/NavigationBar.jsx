@@ -37,17 +37,17 @@ function NavigationBar() {
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav.Link className='me-5' onClick={() => navigate("/products")}>Еда</Nav.Link>
             <Nav.Link className='me-5' onClick={() => navigate("/job")}>Курьерская служба</Nav.Link>
-            {currentUser === ADMIN ? (
+            {currentUser === ADMIN && (
               <Nav.Link onClick={() => navigate("/admin")}>Страница Админа</Nav.Link>
-            ) : (null) }
+            )}
             
             {currentUser ? (
               <>
               <Button className='ms-auto' variant='success' onClick={handleLogout}>{currentUser} Logout</Button> 
-              <Nav.Link onClick={() => navigate("/profile")}>Профиль</Nav.Link>
+              {currentUser !== ADMIN && (<Nav.Link onClick={() => navigate("/profile")}>Профиль</Nav.Link>)}
               </>
             ) : (
-              <NavDropdown className='ms-auto' title="Авторизация">
+              <NavDropdown menuVariant='dark' className='ms-auto' title="Авторизация">
               <UserLogin/>
               <UserRegister/>
             </NavDropdown>
