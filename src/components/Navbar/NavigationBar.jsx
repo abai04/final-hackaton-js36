@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { checkAuth, getYourAccount, logout } from '../../store/actions/authActions';
 import { setCurrentUser } from '../../store/slices/authSlice';
 import { ADMIN } from '../../helpers/consts';
+import Profile from '../UserAuth/Profile/Profile';
 
 function NavigationBar() {
   const navigate = useNavigate();
@@ -40,11 +41,10 @@ function NavigationBar() {
             {currentUser === ADMIN && (
               <Nav.Link onClick={() => navigate("/admin")}>Страница Админа</Nav.Link>
             )}
-            
-            {currentUser ? (
+            <div className='ms-auto'>
+                {currentUser ? (
               <>
-              <Button className='ms-auto' variant='success' onClick={handleLogout}>{currentUser} Logout</Button> 
-              {currentUser !== ADMIN && (<Nav.Link onClick={() => navigate("/profile")}>Профиль</Nav.Link>)}
+              {currentUser === ADMIN ? (<Button onClick={handleLogout}>Выйти</Button>):(<Profile handleLogout = {handleLogout}/>)}
               </>
             ) : (
               <NavDropdown menuVariant='dark' className='ms-auto' title="Авторизация">
@@ -52,6 +52,8 @@ function NavigationBar() {
               <UserRegister/>
             </NavDropdown>
           )}
+            </div>
+            
         </Navbar.Collapse>
       </Container>
     </Navbar>
