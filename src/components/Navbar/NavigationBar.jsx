@@ -50,6 +50,14 @@ function NavigationBar() {
             {currentUser === ADMIN && (
               <Nav.Link onClick={() => navigate("/admin")}>Страница Админа</Nav.Link>
             )}
+            <Nav.Link onClick={() => navigate('/cart')}>
+            <BsCart size={20} />
+            {cart.products?.length > 0 && (
+              <Badge bg="danger" className="ms-1">
+                {cart.products.length}
+              </Badge>
+            )}
+          </Nav.Link>
             <div className='ms-auto'>
                 {currentUser ? (
               <>
@@ -62,14 +70,6 @@ function NavigationBar() {
             </NavDropdown>
           )}
             </div>
-            <Nav.Link onClick={() => navigate('/cart')}>
-            <BsCart size={20} />
-            {cart.products?.length > 0 && (
-              <Badge bg="danger" className="ms-1">
-                {cart.products.length}
-              </Badge>
-            )}
-          </Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>
