@@ -1,55 +1,82 @@
-import { useEffect, useState } from 'react';
+// NavigationBar.js
+import React, { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import UserLogin from '../UserAuth/UserLogin';
-import UserRegister from '../UserAuth/UserRegister';
-import { Button, Dropdown } from 'react-bootstrap';
+import { Button, Badge } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkAuth, getYourAccount, logout } from '../../store/actions/authActions';
+import { checkAuth, logout } from '../../store/actions/authActions';
 import { setCurrentUser } from '../../store/slices/authSlice';
+import { getCart } from '../../store/slices/cartSlice';
 import { ADMIN } from '../../helpers/consts';
+import { BsCart } from 'react-icons/bs';
+import UserLogin from '../UserAuth/UserLogin';
+import UserRegister from '../UserAuth/UserRegister';
+import { useCart } from '../../contexts/CartContextProvider';
 
 function NavigationBar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.auth);
+  const cart = useSelector((state) => state.cart);
+
+
   useEffect(() => {
-    dispatch(checkAuth())
-  }, []);
+    dispatch(checkAuth());
+    dispatch(getCart());
+  }, [dispatch]);
+
   const handleLogout = () => {
-    logout()
-    dispatch(setCurrentUser())
-    navigate("/")
-  }
+    logout();
+    dispatch(setCurrentUser());
+    navigate('/');
+  };
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand
-          style={{ color: "green", fontSize: "800", cursor: "pointer" }}
-          onClick={() => navigate("/")}
+          style={{ color: 'green', fontSize: '800', cursor: 'pointer' }}
+          onClick={() => navigate('/')}
         >
           Kurultai
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-            <Nav.Link className='me-5' onClick={() => navigate("/products")}>Еда</Nav.Link>
-            <Nav.Link className='me-5' onClick={() => navigate("/job")}>Курьерская служба</Nav.Link>
-            {currentUser === ADMIN ? (
-              <Nav.Link onClick={() => navigate("/admin")}>Страница Админа</Nav.Link>
-            ) : (null) }
-            
-            {currentUser ? (
-              <>
-              <Button className='ms-auto' variant='success' onClick={handleLogout}>{currentUser} Logout</Button> 
-              <Nav.Link onClick={() => navigate("/profile")}>Профиль</Nav.Link>
-              </>
-            ) : (
-              <NavDropdown className='ms-auto' title="Авторизация">
-              <UserLogin/>
-              <UserRegister/>
+          <Nav.Link className="me-5" onClick={() => navigate('/products')}>
+            Меню
+          </Nav.Link>
+          <Nav.Link className="me-5" onClick={() => navigate('/job')}>
+            Курьерская служба
+          </Nav.Link>
+          {currentUser === ADMIN ? (
+            <Nav.Link onClick={() => navigate('/admin')}>Страница Админа</Nav.Link>
+          ) : null}
+
+          <Nav.Link onClick={() => navigate('/cart')}>
+            <BsCart size={20} />
+            {cart.products?.length > 0 && (
+              <Badge bg="danger" className="ms-1">
+                {cart.products.length}
+              </Badge>
+            )}
+          </Nav.Link>
+
+          {currentUser ? (
+            <>
+              <Button className="ms-auto" variant="success" onClick={handleLogout}>
+                {currentUser} Выйти
+              </Button>
+              <Nav.Link onClick={() => navigate('/profile')}>Профиль</Nav.Link>
+            </>
+          ) : (
+            <NavDropdown className="ms-auto" title="Авторизация">
+              <NavDropdown.Item>
+                <UserLogin />
+              </NavDropdown.Item>
+              <UserRegister />
             </NavDropdown>
           )}
         </Navbar.Collapse>
