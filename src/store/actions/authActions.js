@@ -55,9 +55,16 @@ export const getYourAccount = createAsyncThunk('auth/getYourAccount', async () =
         throw error
     }
 })
-export const deleteYourAccount = createAsyncThunk('auth/deleteYourAccount', async (_, thunkAPI) => {
+export const deleteYourAccount = createAsyncThunk('auth/deleteYourAccount', async (password) => {
     try {
-        await axios.delete(`${API}/account/your_account/`, getConfig())
+        await axios.delete(`${API}/account/your_account/`, (password), getConfig())
+    } catch (error) {
+        throw error
+    }
+})
+export const editYourAccount = createAsyncThunk('auth/editYourAccount', async (editedAccount) => {
+    try {
+        await axios.patch(`${API}/account/your_account/`,(editedAccount), getConfig())
     } catch (error) {
         throw error
     }

@@ -24,7 +24,7 @@ const EditCategory = ({item}) => {
     return (
         <div style={{display: 'flex'}}>
             <FormControl type='text' value={category} onChange={(e) => setCategory(e.target.value)} />
-            <Button onClick={handleSave}>Сохранить</Button>
+            <Button variant='outline-primary' onClick={handleSave}>Сохранить</Button>
         </div>
     );
 };

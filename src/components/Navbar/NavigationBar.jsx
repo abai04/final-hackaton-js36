@@ -1,5 +1,4 @@
-// NavigationBar.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -15,6 +14,7 @@ import { BsCart } from 'react-icons/bs';
 import UserLogin from '../UserAuth/UserLogin';
 import UserRegister from '../UserAuth/UserRegister';
 import { useCart } from '../../contexts/CartContextProvider';
+import Profile from '../UserAuth/Profile/Profile';
 
 function NavigationBar() {
   const navigate = useNavigate();
@@ -45,17 +45,24 @@ function NavigationBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav.Link className="me-5" onClick={() => navigate('/products')}>
-            Меню
-          </Nav.Link>
-          <Nav.Link className="me-5" onClick={() => navigate('/job')}>
-            Курьерская служба
-          </Nav.Link>
-          {currentUser === ADMIN ? (
-            <Nav.Link onClick={() => navigate('/admin')}>Страница Админа</Nav.Link>
-          ) : null}
-
-          <Nav.Link onClick={() => navigate('/cart')}>
+            <Nav.Link className='me-5' onClick={() => navigate("/products")}>Еда</Nav.Link>
+            <Nav.Link className='me-5' onClick={() => navigate("/job")}>Курьерская служба</Nav.Link>
+            {currentUser === ADMIN && (
+              <Nav.Link onClick={() => navigate("/admin")}>Страница Админа</Nav.Link>
+            )}
+            <div className='ms-auto'>
+                {currentUser ? (
+              <>
+              {currentUser === ADMIN ? (<Button onClick={handleLogout}>Выйти</Button>):(<Profile handleLogout = {handleLogout}/>)}
+              </>
+            ) : (
+              <NavDropdown menuVariant='dark' className='ms-auto' title="Авторизация">
+              <UserLogin/>
+              <UserRegister/>
+            </NavDropdown>
+          )}
+            </div>
+            <Nav.Link onClick={() => navigate('/cart')}>
             <BsCart size={20} />
             {cart.products?.length > 0 && (
               <Badge bg="danger" className="ms-1">
@@ -63,22 +70,6 @@ function NavigationBar() {
               </Badge>
             )}
           </Nav.Link>
-
-          {currentUser ? (
-            <>
-              <Button className="ms-auto" variant="success" onClick={handleLogout}>
-                {currentUser} Выйти
-              </Button>
-              <Nav.Link onClick={() => navigate('/profile')}>Профиль</Nav.Link>
-            </>
-          ) : (
-            <NavDropdown className="ms-auto" title="Авторизация">
-              <NavDropdown.Item>
-                <UserLogin />
-              </NavDropdown.Item>
-              <UserRegister />
-            </NavDropdown>
-          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
