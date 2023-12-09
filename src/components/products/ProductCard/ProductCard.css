@@ -38,12 +38,15 @@
 
   
   .button-custom {
-    width: 100%;
-    background-color: #28a745;
+    width: 80%;
+    background-color: #28a745 !important;
     color: #ffffff;
     transition: background-color 0.3s ease-in-out;
   }
   
   .button-custom:hover {
-    background-color: #218838;
+    background-color: green !important;
   }
+  
+
+  

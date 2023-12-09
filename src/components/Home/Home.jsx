@@ -123,6 +123,7 @@ const Home = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <AnimatedDiv style={slideInFromTop} ref={refTop}>
       <div className="menu_dev">
         <h2 className="menu-h">
           Сэкономьте свое время и энергию с нашим сервисом доставки!
@@ -154,6 +155,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+      </AnimatedDiv>
+      
       <div className="foot_dev" >
         <h3>Kurultai для курьеров</h3>
         <p>Удобный график, вы сами выбирайте когда приступать к работе. Стабильный
