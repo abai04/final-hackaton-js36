@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import icon from '../image/icun.svg';
 import './ProductCard.css';
 import ProductModal from './ProductModal';
-import { useCart } from '../../../contexts/CartContextProvider';
 
 function ProductCard(props) {
   const { item } = props;
@@ -16,10 +15,6 @@ function ProductCard(props) {
     width: '100%',
   };
 
-  const { addProductToCart } = useCart();
-  const handleAddToCart = () => {
-    addProductToCart(item); 
-  };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
