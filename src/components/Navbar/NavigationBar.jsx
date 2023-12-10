@@ -38,7 +38,7 @@ function NavigationBar() {
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand
-          style={{ color: 'green', fontSize: '800', cursor: 'pointer' }}
+          style={{ fontFamily: 'Manrope, serif', color: 'green', fontSize: '800', cursor: 'pointer' }}
           onClick={() => navigate('/')}
         >
           Kurultai
