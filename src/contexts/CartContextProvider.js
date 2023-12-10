@@ -11,14 +11,18 @@ export const cartContext = createContext();
 export const useCart = () => useContext(cartContext);
 
 const INIT_STATE = {
-  cart: JSON.parse(localStorage.getItem("cart")),
+  cart: JSON.parse(localStorage.getItem("cart")) || { products: [], totalPrice: 0 },
   cartLength: getProductsCountInCart(),
 };
+
 
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case ACTIONS.GET_CART:
-      return { ...state, cart: action.payload };
+      return {
+        ...state,
+        cart: action.payload,
+      };
 
     default:
       return state;

@@ -10,9 +10,8 @@ export default function Cart() {
   const cart = useSelector((state) => state.cart.cart || { products: [], totalPrice: 0 });
 
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem('cart')) || { products: [], totalPrice: 0 };
-    dispatch(getCart(storedCart));
-  }, [dispatch]);
+    console.log('Cart effect: cart=', cart);
+  }, [cart]);
 
   const cartCleaner = () => {
     localStorage.removeItem('cart');
@@ -24,9 +23,11 @@ export default function Cart() {
     dispatch(changeProductCount({ id, count: newCount }));
   };
 
+
   const handleDeleteProduct = (id) => {
-    dispatch(deleteProductFromCart(parseInt(id, 10))); 
+    dispatch(deleteProductFromCart(id));
   };
+
 
   const handleBuyClick = () => {
     console.log('Купить');
