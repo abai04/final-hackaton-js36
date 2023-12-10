@@ -1,94 +1,45 @@
-import React, { useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import React from 'react';
+import { Button, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteProductFromCart, getCart, changeProductCount } from '../../store/slices/cartSlice';
+import { deleteProductFromCart } from '../../store/slices/cartSlice';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-export default function Cart() {
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cart || { products: [], totalPrice: 0 });
-
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem('cart')) || { products: [], totalPrice: 0 };
-    dispatch(getCart(storedCart));
-  }, [dispatch]);
-
-  const cartCleaner = () => {
-    localStorage.removeItem('cart');
-    dispatch(getCart({ products: [], totalPrice: 0 }));
-  };
-
-  const handleProductCountChange = (id, count) => {
-    const newCount = isNaN(count) ? 1 : Math.max(1, parseInt(count, 10));
-    dispatch(changeProductCount({ id, count: newCount }));
-  };
-
-  const handleDeleteProduct = (id) => {
-    dispatch(deleteProductFromCart(parseInt(id, 10))); 
-  };
-
-  const handleBuyClick = () => {
-    console.log('Купить');
-  };
-
-  return (
-    <div className="container mt-4">
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">Picture</th>
-            <th scope="col" className="text-right">
-              Title
-            </th>
-            <th scope="col" className="text-right">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart && cart.products && cart.products.length > 0 ? (
-            cart.products.map((row) => (
-              <tr key={row.item.id}>
-                <td>
-                  <img src={row.item.image} alt="" width={'70'} />
-                </td>
-                <td className="text-right">{row.item.title}</td>
-                <td className="text-right">
-                  <input
-                    type="number"
-                    value={row.count}
-                    onChange={(e) => handleProductCountChange(row.item.id, e.target.value)}
-                    min={1}
-                  />
-                  <Button onClick={() => handleDeleteProduct(row.item.id)}>
-                    Удалить
-                  </Button>
-                </td>
-              </tr>
-            ))
-          ) : (
+const Cart = () => {
+    const {cart, cartLength} = useSelector((state) => state.cart)
+    const dispatch = useDispatch()
+    console.log(cart);
+    return (
+        <div>
+            <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th style={{width: "20px"}}>Картинка</th>
+          <th>Название</th>
+          <th>Категории</th>
+          <th>Цена</th>
+          <th>Колличество</th>
+          <th>Общая цена продукта</th>
+          <th>-</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+           cart.products.map((product) => (
             <tr>
-              <td colSpan={3} className="text-center">
-                Корзина пуста
-              </td>
+                <td><img width={"100px"} src={product.item.image} alt="" /></td>
+                <td>{product.item.title}</td>
+                <td>{product.item.category}</td>
+                <td>{product.item.price}</td>
+                <td>{product.count}</td>
+                <td>{product.subPrice}</td>
+                <td><Button onClick={() => dispatch(deleteProductFromCart(product.item.id))} variant='outline-danger'>Удалить</Button></td>
             </tr>
-          )}
-          <tr>
-            <td colSpan={2} className="text-right">
-              <strong>Итого:</strong>
-            </td>
-            <td className="text-right">
-              <strong>{cart && cart.totalPrice} сом</strong>
-            </td>
-            <td className="text-right">
-              <Button variant="primary" onClick={handleBuyClick}>
-                Купить
-              </Button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
-}
+           ))
+        }
+      </tbody>
+      
+    </Table>
+        </div>
+    );
+};
+
+export default Cart;
