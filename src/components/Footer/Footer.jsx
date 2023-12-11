@@ -2,7 +2,7 @@ import React from "react";
 import "../Footer/Footer.css";
 const Footer = () => {
   return (
-    <footer className="footer-container">
+    <footer style={{ marginTop: "10%" }} className="footer-container">
       <div className="footer-links">
         <div className="link-group">
           <h3>Присоединиться к нам</h3>

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API } from "../../helpers/consts";
-import { getConfig } from "@testing-library/react";
+import { getConfig } from "../../helpers/functions";
 
 export const register = createAsyncThunk('account/register', async (newUser) => {
     try{
@@ -33,7 +33,7 @@ export const checkAuth = createAsyncThunk('auth/checkAuth', async () => {
         const result = await axios.post(`${API}/account/refresh/`, {
             refresh: tokens.refresh
         },
-        getConfig)
+        getConfig())
         
         localStorage.setItem(
       'tokens',
@@ -44,5 +44,28 @@ export const checkAuth = createAsyncThunk('auth/checkAuth', async () => {
     );
     }catch (error){
         logout()
+    }
+})
+
+export const getYourAccount = createAsyncThunk('auth/getYourAccount', async () => {
+    try {
+        const result = await axios.get(`${API}/account/your_account/`, getConfig())
+        return result.data
+    } catch (error) {
+        throw error
+    }
+})
+export const deleteYourAccount = createAsyncThunk('auth/deleteYourAccount', async (password) => {
+    try {
+        await axios.delete(`${API}/account/your_account/`, (password), getConfig())
+    } catch (error) {
+        throw error
+    }
+})
+export const editYourAccount = createAsyncThunk('auth/editYourAccount', async (editedAccount) => {
+    try {
+        await axios.patch(`${API}/account/your_account/`,(editedAccount), getConfig())
+    } catch (error) {
+        throw error
     }
 })

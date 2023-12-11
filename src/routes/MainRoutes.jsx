@@ -9,6 +9,10 @@ import AddProductPage from "../pages/AddProductPage";
 import AboutUsPage from "../pages/AboutUsPage";
 import SellerPage from "../pages/Courier/SellerPage";
 import AfterSeller from "../pages/Courier/AfterSelle/AfterSeller";
+import EditProduct from "../components/products/EditProduct/EditProduct";
+import CategoriesMenu from "../components/products/categories/CategoriesMenu";
+import CartPage from "../pages/CartPage";
+import Profile from "../components/UserAuth/Profile/Profile";
 
 const MainRoutes = () => {
   return (
@@ -27,6 +31,9 @@ const MainRoutes = () => {
         <Route path="/afterseller" element={<AfterSeller />} />
 
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/edit/:id" element={<EditProduct />} />
+        <Route path="/categories" element={<CategoriesMenu />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
     </div>
   );

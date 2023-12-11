@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProduct, getCategories } from '../../../store/actions/productActions';
-import { getConfig } from '@testing-library/react';
-import { useNavigate } from 'react-router-dom';
+import { addProduct, editProduct, getCategories, getOneProduct } from '../../../store/actions/productActions';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const AddProduct = () => {
-    const {categories} = useSelector((state) => state.product)
+const EditProduct = () => {
+    const {categories, oneProduct} = useSelector((state) => state.product)
 
     const [title, setTitle] = useState("")
     const [category, setCategory] = useState("")
@@ -14,28 +13,39 @@ const AddProduct = () => {
     const [image, setImage] = useState(null)
     const [description, setDescription] = useState("")
     const dispatch = useDispatch()
+    const {id} = useParams()
+    const navigate = useNavigate()
     useEffect(() => {
+        dispatch(getOneProduct(id))
         dispatch(getCategories())
     }, [])
-    const navigate = useNavigate()
+    useEffect(() => {
+        if(oneProduct) {
+            setTitle(oneProduct.title)
+            setDescription(oneProduct.description)
+            setPrice(oneProduct.price)
+            setCategory(oneProduct.category)
+        }
+    }, [oneProduct])
     const handleCreate = () => {
-    let newProduct = new FormData();
-    newProduct.append('title', title);
-    newProduct.append('category', category);
-    newProduct.append('description', description);
-    newProduct.append('price', price);
+    let editedProduct = new FormData();
+    editedProduct.append('title', title);
+    editedProduct.append('category', category);
+    editedProduct.append('description', description);
+    editedProduct.append('price', price);
     if (image) {
-      newProduct.append('image', image);
+      editedProduct.append('image', image);
     }
-    dispatch(addProduct(newProduct)).then(() => navigate('/products'));
+    editedProduct.append("id", id)
+    dispatch(editProduct(editedProduct)).then(() => navigate("/products"));
   };
     return (
         <Container>
-            <div>
+            <div style={{backgroundColor: "floralwhite"}}>
             <h2 style={{marginTop: "100px"}}>Добавьте новое блюдо в меню</h2>
             </div>
             
-           <Form style={{backgroundColor: "#a4ebac", boxShadow: "1px 10px 10px 5px #a4ebac", borderRadius: "10px"}} className='w-50'>
+           <Form style={{backgroundColor: "#a4ebac", boxShadow: "1px 5px 1px 1px #a4ebac"}} className='w-50'>
            <Form.Group>
             <Form.Label>Название блюда</Form.Label>
             <Form.Control onChange={(e) => setTitle(e.target.value)} value={title} type='text' className='w-50' placeholder='писать здесь'/>
@@ -76,11 +86,11 @@ const AddProduct = () => {
             value={description}
             type='text'/>
            </Form.Group>
-            <Button onClick={handleCreate}>Создать</Button>
+            <Button onClick={handleCreate}>Сохранить</Button>
 
            </Form>
         </Container>
     );
 };
 
-export default AddProduct;
+export default EditProduct;
