@@ -5,9 +5,9 @@ import AdminRegister from "./Courier/Admin/AdminRegister";
 const AdminPage = () => {
   return (
     <div style={{ height: "500px" }}>
-      <Admin />
+      {/* <Admin /> */}
 
-      {/* <AdminRegister /> */}
+      <AdminRegister />
     </div>
   );
 };
