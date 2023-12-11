@@ -1,0 +1,44 @@
+.after_seller {
+  padding: 0px;
+  margin: 0px;
+}
+
+.slr_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.slr_contaiber_top {
+  width: 80%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(156, 157, 158);
+  border-radius: 30px;
+}
+
+.slr_container_left {
+  width: 38%;
+}
+
+.slr_container_left h2 {
+  text-align: left;
+  color: rgb(49, 48, 48);
+  font-size: 40px;
+  margin-top: 40px;
+  margin-left: 40px;
+  font-weight: 700;
+}
+
+.slr_container_right {
+  margin-left: 10%;
+  margin-top: 35px;
+  width: 40%;
+  height: 70vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  border-radius: 30px;
+}

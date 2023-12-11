@@ -1,112 +1,49 @@
 import React from "react";
-import "./Seller.css";
-import flag from "../../components/assets/categories-of-food.jpg";
-import velo from "../../components/assets/courVelo.jpg";
-import bake from "../../components/assets/courBake.jpg";
-import drive from "../../components/assets/courDrive.jpg";
-import { Link } from "react-router-dom";
+import "./AfterSeller.css";
 
-const SellerPage = () => {
+const AfterSeller = () => {
   return (
-    <div className="container">
-      <div className="center_style">
-        <div className="container_top">
-          <div className="title_texts">
-            <h2>Вы сами решаете, какой получать доход.</h2>
+    <div className="after_seller">
+      <div className="slr_container">
+        <div className="slr_contaiber_top">
+          <div className="slr_container_left">
+            <h2> Вы сами решаете, какой получать доход.</h2>
           </div>
-          <div className="Bayer_register">
-            <h2 className="bayer_text">
-              Зарегистрируйтесь и начните сотрудничество менее чем за сутки
-            </h2>
-            <input
-              className="input_bayer"
-              type="text"
-              placeholder="Имя и фамилия"
-            />
-            <input
-              className="input_bayer"
-              type="email"
-              placeholder="эл. почта"
-            />
-            <div className="tel">
-              <div className="kg996">
-                <img
-                  style={{ width: "25%", marginRight: "12px" }}
-                  src={flag}
-                  alt="flag"
-                />
-                +996
-              </div>
-              <div className="inputs">
-                <input
-                  maxlength="9"
-                  className="input_tel"
-                  type="tell"
-                  placeholder="707 07 07 07"
-                />
-              </div>
-            </div>
-            <div className="works">
-              <div className="wrokCour">
-                <img
-                  style={{
-                    width: "80%",
-                    margin: "20px 0 20px 0",
-                    borderRadius: "15px",
-                  }}
-                  src={velo}
-                  alt=""
-                />
-              </div>
-              <div className="wrokCour1">
-                <img
-                  style={{
-                    width: "80%",
-                    margin: "20px 0 20px 0",
-                    borderRadius: "15px",
-                  }}
-                  src={bake}
-                  alt=""
-                />
-              </div>
-              <div className="wrokCour2">
-                <img
-                  style={{
-                    width: "80%",
-                    margin: "20px 0 20px 0",
-                    borderRadius: "15px",
-                  }}
-                  src={drive}
-                  alt=""
-                />
-              </div>
-            </div>
-            <button className="btn_continue">
-              {" "}
-              <Link
+          <div className="slr_container_right">
+            <div className="slr_right_img">
+              <img
+                style={{ width: "20%", margin: "25px 195px " }}
+                src="https://couriers.glovoapp.com/svg/v-hand.svg"
+                alt=""
+              />
+              <p
                 style={{
-                  textDecoration: "none",
-                  color: "white",
-                  fontSize: "24px",
+                  width: "70%",
+                  textAlign: "center",
                   fontFamily: "system-ui",
+                  margin: "10px 73px",
+                  fontSize: "20px",
                 }}
-                to="/afterseller"
               >
-                ПРОДОЛЖИТЬ
-              </Link>
-            </button>
-            <ul className="bt_title_link">
-              <li className="bt_title_text">
-                Нажимая эту кнопку, вы соглашаетесь с нашими
-              </li>
-            </ul>
-            <ul className="bt_title_link">
-              <a href="">
-                <li className="bt_title_text2">
-                  Положения и условияПолитика конфиденциальности
-                </li>
-              </a>
-            </ul>
+                {" "}
+                Мы отправили вам электронное письмо с информацией о дальнейших
+                шагах. Не забудьте проверить папку "Спам", если вы не получили
+                от нас письмо-подтверждение.
+              </p>
+              <p
+                style={{
+                  fontSize: "24px",
+                  color: "rgb(17, 174, 17)",
+                  fontWeight: "600",
+                  listStyleType: "none",
+                  textAlign: "center",
+                  fontFamily: "system-ui",
+                  marginTop: "45px",
+                }}
+              >
+                Мы ждем вас!
+              </p>
+            </div>
           </div>
         </div>
         <div className="container_bottom">
@@ -199,4 +136,4 @@ const SellerPage = () => {
   );
 };
 
-export default SellerPage;
+export default AfterSeller;
