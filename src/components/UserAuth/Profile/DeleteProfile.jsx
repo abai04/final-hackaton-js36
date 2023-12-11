@@ -26,7 +26,10 @@ function DeleteProfile(props) {
 
     const navigate = useNavigate()
   const handleDelete = () => {
-   dispatch(deleteYourAccount(password))
+   dispatch(deleteYourAccount())
+   logout()
+   dispatch(setCurrentUser())
+   navigate("/")
 }
   return (
     <>
@@ -37,16 +40,13 @@ function DeleteProfile(props) {
           <Modal.Title>Удаление</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <Form>
-                <Form.Control onChange={(e) => setPassword(e.target.value)} type='password' placeholder="Пароль"/>
-            </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            закрыть
           </Button>
           <Button variant="primary" onClick={handleDelete}>
-            Save Changes
+            Удалить
           </Button>
         </Modal.Footer>
       </Modal>
