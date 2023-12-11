@@ -174,8 +174,65 @@
   }
 }
 
-@media (max-width: 426px) {
+@media (max-width: 840px) {
+  .link-group h3 {
+    font-size: 14px;
+    font-style: normal;
+  }
+
+  .link-1,
+  .link-2,
+  .link-3,
+  .link-4,
+  .link-5,
+  .link-6,
+  .link-7,
+  .link-8,
+  .cat-1,
+  .cat-2,
+  .cat-3 {
+    font-size: 12px;
+    font-style: normal;
+  }
+}
+
+@media (max-width: 660px) {
+  .link-group h3 {
+    font-size: 14px;
+    font-style: normal;
+  }
+
+  .link-1,
+  .link-2,
+  .link-3,
+  .link-4,
+  .link-5,
+  .link-6,
+  .link-7,
+  .link-8,
+  .cat-1,
+  .cat-2,
+  .cat-3 {
+    font-size: 12px;
+    font-style: normal;
+  }
+
+  .footer-links{
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 520px) {
   .footer-links {
     flex-direction: column;
+  }
+
+  .footer-links h3 {
+    display: flex;
+    gap: 0px;
+  }
+
+  .footer-links ul {
+    display: none;
   }
 }
