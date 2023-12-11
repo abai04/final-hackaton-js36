@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteProductFromCart } from '../../store/slices/cartSlice';
+import { changeProductCount, deleteProductFromCart } from '../../store/slices/cartSlice';
 
 const Cart = () => {
     const {cart, cartLength} = useSelector((state) => state.cart)
@@ -29,7 +29,12 @@ const Cart = () => {
                 <td>{product.item.title}</td>
                 <td>{product.item.category}</td>
                 <td>{product.item.price}</td>
-                <td>{product.count}</td>
+                <td><input
+                value={product.count}
+                min={1}
+                max={20}
+                onChange={(e) => dispatch(changeProductCount({id: product.item.id, count: e.target.value}))}
+                 type="number" /></td>
                 <td>{product.subPrice}</td>
                 <td><Button onClick={() => dispatch(deleteProductFromCart(product.item.id))} variant='outline-danger'>Удалить</Button></td>
             </tr>

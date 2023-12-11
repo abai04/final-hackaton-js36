@@ -8,6 +8,7 @@ const initialState = {
     oneProduct: null,
     loading: false,
     error: null,
+    favorites: null,
     pages: 1
 }
 export const productSlice = createSlice({

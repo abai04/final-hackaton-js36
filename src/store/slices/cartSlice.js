@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { calcTotalPrice, getCartInStorage, getProductsCountInCart } from "../../helpers/functions";
+import { calcSubPrice, calcTotalPrice, getCartInStorage, getProductsCountInCart } from "../../helpers/functions";
 
 const initialState = {
     cart: JSON.parse(localStorage.getItem('cart')),
@@ -12,7 +12,9 @@ export const checkProductInCart = (id) => {
             let newCart = cart.products.filter((elem) => elem.item.id === id)
             return newCart.length > 0 ? true : false
         }
-    }
+}
+
+
 
 const cartSlice = createSlice({
     name: "cart",
@@ -67,10 +69,27 @@ const cartSlice = createSlice({
         cart.totalPrice = calcTotalPrice(cart.products);
         localStorage.setItem('cart', JSON.stringify(cart));
         state.cart = cart
+    },
+    changeProductCount : (state, action) => {
+        let cart = getCartInStorage()
+
+        cart.products = cart.products.map((product) => {
+            if(product.item.id === action.payload.id) {
+                product.count = action.payload.count;
+                product.subPrice = calcSubPrice(product)
+            }
+            return product
+        })
+
+        cart.totalPrice = calcTotalPrice(cart.products)
+
+        localStorage.setItem('cart', JSON.stringify(cart))
+        state.cart = cart
+
     }
     }
 })
 
-export const {getCart, addToCart, deleteProductFromCart} = cartSlice.actions
+export const {getCart, addToCart, deleteProductFromCart, changeProductCount} = cartSlice.actions
 
 export const cartReducer = cartSlice.reducer
