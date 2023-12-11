@@ -7,25 +7,6 @@ import PaginationList from "./Pagination";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 const ProductList = () => {
-  const { productList, loading } = useSelector((state) => state.product);
-  const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [searchParams]);
-  return (
-    <div>
-      <Container style={{ display: "flex", flexWrap: "wrap" }}>
-        {productList.map((item) => (
-          <ProductCard key={item.id} item={item} />
-        ))}
-      </Container>
-      <Container>
-        <PaginationList />
-      </Container>
-    </div>
-  );
-
   const { productList, loading, categories } = useSelector(
     (state) => state.product
   );

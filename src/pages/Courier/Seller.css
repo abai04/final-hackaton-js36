@@ -11,6 +11,7 @@
 }
 
 .container_top {
+  margin-top: 60px;
   width: 80%;
   height: 100vh;
   display: flex;

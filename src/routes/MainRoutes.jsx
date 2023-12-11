@@ -13,6 +13,7 @@ import EditProduct from "../components/products/EditProduct/EditProduct";
 import CategoriesMenu from "../components/products/categories/CategoriesMenu";
 import CartPage from "../pages/CartPage";
 import Profile from "../components/UserAuth/Profile/Profile";
+import AdminRegister from "../pages/Courier/Admin/AdminRegister";
 
 const MainRoutes = () => {
   return (
@@ -28,6 +29,8 @@ const MainRoutes = () => {
         <Route path="/aboutus" element={<AboutUsPage />} />
 
         <Route path="/seller" element={<SellerPage />} />
+        <Route path="/adminregister" element={<AdminRegister />} />
+
         <Route path="/afterseller" element={<AfterSeller />} />
 
         <Route path="/admin" element={<AdminPage />} />
