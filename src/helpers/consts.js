@@ -1,4 +1,4 @@
-export const API = "http://16.170.221.153/api"
+export const API = "https://cms-up.ru/api"
 
 export const ADMIN = "admin@my.ru"
 
