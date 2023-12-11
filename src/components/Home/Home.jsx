@@ -129,7 +129,7 @@ const Home = () => {
           Сэкономьте свое время и энергию с нашим сервисом доставки!
         </h2>
         <div className="menu_title">
-          <div>
+          <div id="mainBlock">
             <img src={delivery} alt="" />
             <h3>Лучший ресторан вашего города</h3>
             <p>
@@ -163,10 +163,10 @@ const Home = () => {
         заработок, еженедельные выплаты. Отслеживайте свой рейтинг</p>
         <div className="courier-images-container">
         <AnimatedDiv style={slideInFromLeft} ref={refLeft}>
-          <img src={curier1} alt="err" />
+          <img  src={curier1} alt="err" />
         </AnimatedDiv>
         <AnimatedDiv  style={slideInFromTop} ref={refTop}>
-          <img src={curier2} alt="err" />
+          <img id="img" src={curier2} alt="err" />
         </AnimatedDiv>
         <AnimatedDiv  style={slideInFromRight} ref={refRight}>
           <img src={curier3} alt="err" />
