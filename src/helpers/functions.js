@@ -24,6 +24,10 @@ export const getProductsCountInCart = () => {
   return cart ? cart.products.length : 0;
 };
 
+export const calcSubPrice = (product) => {
+  return +product.item.price * product.count;
+};
+
 export const calcTotalPrice = (products) => {
   const totalPrice = products.reduce((acc, curr) => (acc += curr.subPrice), 0);
 

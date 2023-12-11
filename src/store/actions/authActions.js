@@ -55,9 +55,9 @@ export const getYourAccount = createAsyncThunk('auth/getYourAccount', async () =
         throw error
     }
 })
-export const deleteYourAccount = createAsyncThunk('auth/deleteYourAccount', async (password) => {
+export const deleteYourAccount = createAsyncThunk('auth/deleteYourAccount', async () => {
     try {
-        await axios.delete(`${API}/account/your_account/`, (password), getConfig())
+        await axios.delete(`${API}/account/your_account/`,  getConfig())
     } catch (error) {
         throw error
     }

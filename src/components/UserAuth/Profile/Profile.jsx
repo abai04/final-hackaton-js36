@@ -12,7 +12,8 @@ import { faEdit, faUser } from '@fortawesome/free-regular-svg-icons';
 import EditUser from './EditProfile';
 import DeleteProfile from './DeleteProfile';
 
-function Profile({handleLogout}) {
+function Profile(props) {
+  const {handleLogout} = props
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
