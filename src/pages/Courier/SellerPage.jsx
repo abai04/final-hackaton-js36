@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Seller.css";
 import flag from "../../components/assets/categories-of-food.jpg";
 import velo from "../../components/assets/courVelo.jpg";
@@ -7,6 +7,38 @@ import drive from "../../components/assets/courDrive.jpg";
 import { Link } from "react-router-dom";
 
 const SellerPage = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [selectedCareer, setSelectedCareer] = useState(null);
+
+  const handleContinue = () => {
+    setNameError("");
+    setEmailError("");
+    setPhoneError("");
+
+    if (!name) {
+      setNameError("Введите имя и фамилию!");
+    }
+    if (!email) {
+      setEmailError("Введите эл. почту!");
+    }
+
+    if (nameError || emailError || phoneError) {
+      setErrorMessage("Заполните все поля");
+    } else {
+      setErrorMessage("");
+    }
+  };
+
+  const handleCareerSelect = (career) => {
+    setSelectedCareer(career);
+  };
+
   return (
     <div className="container">
       <div className="center_style">
@@ -22,12 +54,28 @@ const SellerPage = () => {
               className="input_bayer"
               type="text"
               placeholder="Имя и фамилия"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
+            <p
+              className="error_message"
+              style={{ color: "red", fontSize: "12px", textAlign: "center" }}
+            >
+              {nameError}
+            </p>
             <input
               className="input_bayer"
               type="email"
               placeholder="эл. почта"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
+            <p
+              className="error_message"
+              style={{ color: "red", fontSize: "12px", textAlign: "center" }}
+            >
+              {emailError}
+            </p>
             <div className="tel">
               <div className="kg996">
                 <img
@@ -39,50 +87,72 @@ const SellerPage = () => {
               </div>
               <div className="inputs">
                 <input
-                  maxlength="9"
+                  maxLength="9"
                   className="input_tel"
-                  type="tell"
+                  type="tel"
                   placeholder="707 07 07 07"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
+              <p
+                className="error_message"
+                style={{ color: "red", fontSize: "12px", textAlign: "center" }}
+              >
+                {phoneError}
+              </p>
             </div>
             <div className="works">
-              <div className="wrokCour">
+              <div
+                className="wrokCour"
+                onClick={() => handleCareerSelect("velo")}
+              >
                 <img
                   style={{
                     width: "80%",
                     margin: "20px 0 20px 0",
                     borderRadius: "15px",
+                    border:
+                      selectedCareer === "velo" ? "2px solid red" : "none",
                   }}
                   src={velo}
                   alt=""
                 />
               </div>
-              <div className="wrokCour1">
+              <div
+                className="wrokCour1"
+                onClick={() => handleCareerSelect("bake")}
+              >
                 <img
                   style={{
                     width: "80%",
                     margin: "20px 0 20px 0",
                     borderRadius: "15px",
+                    border:
+                      selectedCareer === "bake" ? "2px solid red" : "none",
                   }}
                   src={bake}
                   alt=""
                 />
               </div>
-              <div className="wrokCour2">
+              <div
+                className="wrokCour2"
+                onClick={() => handleCareerSelect("drive")}
+              >
                 <img
                   style={{
                     width: "80%",
                     margin: "20px 0 20px 0",
                     borderRadius: "15px",
+                    border:
+                      selectedCareer === "drive" ? "2px solid red" : "none",
                   }}
                   src={drive}
                   alt=""
                 />
               </div>
             </div>
-            <button className="btn_continue">
-              {" "}
+            <button className="btn_continue" onClick={handleContinue}>
               <Link
                 style={{
                   textDecoration: "none",
@@ -90,7 +160,7 @@ const SellerPage = () => {
                   fontSize: "24px",
                   fontFamily: "system-ui",
                 }}
-                to="/afterseller"
+                to={name && email && phone ? "/afterseller" : ""}
               >
                 ПРОДОЛЖИТЬ
               </Link>
