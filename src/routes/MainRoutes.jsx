@@ -7,10 +7,13 @@ import JopPage from "../pages/JopPage";
 import AdminPage from "../pages/AdminPage";
 import AddProductPage from "../pages/AddProductPage";
 import AboutUsPage from "../pages/AboutUsPage";
+import SellerPage from "../pages/Courier/SellerPage";
+import AfterSeller from "../pages/Courier/AfterSelle/AfterSeller";
 import EditProduct from "../components/products/EditProduct/EditProduct";
 import CategoriesMenu from "../components/products/categories/CategoriesMenu";
 import CartPage from "../pages/CartPage";
 import Profile from "../components/UserAuth/Profile/Profile";
+import AdminRegister from "../pages/Courier/Admin/AdminRegister";
 
 const MainRoutes = () => {
   return (
@@ -24,9 +27,16 @@ const MainRoutes = () => {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/add" element={<AddProductPage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
-        <Route path="/edit/:id" element={<EditProduct/>} />
-        <Route path="/categories" element={<CategoriesMenu/>} />
-        <Route path="/cart" element={<CartPage/>} /> 
+
+        <Route path="/seller" element={<SellerPage />} />
+        <Route path="/adminregister" element={<AdminRegister />} />
+
+        <Route path="/afterseller" element={<AfterSeller />} />
+
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/edit/:id" element={<EditProduct />} />
+        <Route path="/categories" element={<CategoriesMenu />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
     </div>
   );
