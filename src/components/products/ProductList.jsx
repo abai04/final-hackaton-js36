@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories, getProducts } from "../../store/actions/productActions";
 import ProductCard from "./ProductCard/ProductCard";
-import { Container, Dropdown, NavDropdown } from "react-bootstrap";
+import { Container, Dropdown, Form, NavDropdown } from "react-bootstrap";
 import PaginationList from "./Pagination";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
@@ -12,6 +12,12 @@ const ProductList = () => {
   );
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get('search') || '')
+  useEffect(() => {
+    setSearchParams({
+      search:search,
+    })
+  }, [search])
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
@@ -31,6 +37,8 @@ const ProductList = () => {
   };
   return (
     <div>
+      <div className="d-flex w-50">
+
       <Dropdown style={{ marginLeft: "150px" }}>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Категория
@@ -49,6 +57,10 @@ const ProductList = () => {
           ))}
         </Dropdown.Menu>
       </Dropdown>
+      <Form.Control value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      placeholder="Search"/>
+      </div>
 
       <Container style={{ display: "flex", flexWrap: "wrap" }}>
         {productList.length === 0 ? (
