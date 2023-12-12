@@ -14,6 +14,7 @@ import CategoriesMenu from "../components/products/categories/CategoriesMenu";
 import CartPage from "../pages/CartPage";
 import Profile from "../components/UserAuth/Profile/Profile";
 import AdminRegister from "../pages/Courier/Admin/AdminRegister";
+import Admin from "../components/Admin/Admin";
 
 const MainRoutes = () => {
   return (
@@ -33,7 +34,7 @@ const MainRoutes = () => {
 
         <Route path="/afterseller" element={<AfterSeller />} />
 
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/adminctg" element={<Admin />} />
         <Route path="/edit/:id" element={<EditProduct />} />
         <Route path="/categories" element={<CategoriesMenu />} />
         <Route path="/cart" element={<CartPage />} />
