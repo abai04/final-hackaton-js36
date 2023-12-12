@@ -12,8 +12,8 @@ import { checkAuth, getYourAccount, logout } from '../../store/actions/authActio
 import { setCurrentUser } from '../../store/slices/authSlice';
 import { ADMIN } from '../../helpers/consts';
 import Profile from '../UserAuth/Profile/Profile';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 function NavigationBar() {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ function NavigationBar() {
             <Nav.Link className='me-5' onClick={() => navigate("/products")}>Еда</Nav.Link>
             <Nav.Link className='me-5' onClick={() => navigate("/job")}>Курьерская служба</Nav.Link>
             <Nav.Link className='me-5' onClick={() => navigate("/cart")}>
-              <FontAwesomeIcon icon={faCartShopping}/>
+              корзинка
             </Nav.Link>
             {currentUser === ADMIN && (
               <Nav.Link onClick={() => navigate("/admin")}>Страница Админа</Nav.Link>

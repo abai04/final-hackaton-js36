@@ -1,14 +1,23 @@
 import React from 'react';
-import { Button, Table } from 'react-bootstrap';
+import { Button, Container, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeProductCount, deleteProductFromCart } from '../../store/slices/cartSlice';
+import { order } from '../../store/actions/cartActions';
 
 const Cart = () => {
     const {cart, cartLength} = useSelector((state) => state.cart)
+    const {currentUser} = useSelector((state) => state.auth)
     const dispatch = useDispatch()
+    const handleOrder = () => {
+      const newOrder = {
+        products: cart.products,
+        address: "если работает, напиши"
+      }
+      dispatch(order(newOrder))
+    }
     console.log(cart);
     return (
-        <div>
+        <Container className='d-block'>
             <Table striped bordered hover>
       <thead>
         <tr>
@@ -43,7 +52,11 @@ const Cart = () => {
       </tbody>
       
     </Table>
-        </div>
+    {currentUser ? (<Button
+    onClick={handleOrder}
+     variant='success'>Купить за {cart.totalPrice} сом</Button>) : ("Зайдите на свой профиль, чтобы оформить заказ")}
+    
+        </Container>
     );
 };
 
