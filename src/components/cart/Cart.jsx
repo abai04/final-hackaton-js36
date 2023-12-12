@@ -1,24 +1,36 @@
-import React from 'react';
-import { Button, Container, Table } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Button, Container, Form, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeProductCount, deleteProductFromCart } from '../../store/slices/cartSlice';
+import { changeProductCount, deleteProductFromCart, getCart } from '../../store/slices/cartSlice';
 import { order } from '../../store/actions/cartActions';
+import { getCartInStorage } from '../../helpers/functions';
 
 const Cart = () => {
+    const [address, setAddress] = useState("")
+    const [comment, setComment] = useState("")
     const {cart, cartLength} = useSelector((state) => state.cart)
     const {currentUser} = useSelector((state) => state.auth)
     const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(getCart())
+    }, [])
     const handleOrder = () => {
+      const productsToOrder = cart.products.map((product) => {
+        return {product: product.item.id, quantity: product.count}
+      })
       const newOrder = {
-        products: cart.products,
-        address: "если работает, напиши"
+        products: productsToOrder,
+        address,
+        comment
       }
       dispatch(order(newOrder))
+      localStorage.removeItem('cart')
+      dispatch(getCart())
     }
-    console.log(cart);
     return (
         <Container className='d-block'>
-            <Table striped bordered hover>
+          {cart.products.length !== 0 ? (<>
+          <Table striped bordered hover>
       <thead>
         <tr>
           <th style={{width: "20px"}}>Картинка</th>
@@ -52,10 +64,17 @@ const Cart = () => {
       </tbody>
       
     </Table>
-    {currentUser ? (<Button
+    {currentUser ? (<>
+    <Button
     onClick={handleOrder}
-     variant='success'>Купить за {cart.totalPrice} сом</Button>) : ("Зайдите на свой профиль, чтобы оформить заказ")}
+     variant='success'>Купить за {cart.totalPrice} сом</Button>
+     <Form.Control onChange={(e) => setAddress(e.target.value)} className='w-25' placeholder='Ваш адрес'/>
+     <Form.Control onChange={(e) => setComment(e.target.value)} className='w-25' placeholder='Комментарий к заказу'/>
+     </>) : ("Зайдите на свой профиль, чтобы оформить заказ")}
     
+          </>) : (<h1>Ваша корзина пуста</h1>)}
+          
+            
         </Container>
     );
 };
