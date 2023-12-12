@@ -1,5 +1,6 @@
 import React from "react";
 import "./AdminRegister.css";
+import { Link } from "react-router-dom";
 
 const AdminRegister = () => {
   return (
@@ -30,7 +31,19 @@ const AdminRegister = () => {
               />
             </div>
             <div className="input_button">
-              <button className="btn_click">SIGN UP</button>
+              <button className="btn_click">
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontSize: "24px",
+                    fontFamily: "system-ui",
+                  }}
+                  to={"/adminctg"}
+                >
+                  SIGN UP
+                </Link>
+              </button>
             </div>
           </div>
         </div>
