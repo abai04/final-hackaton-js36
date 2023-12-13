@@ -11,32 +11,26 @@ import { useEffect, useState } from 'react';
 import ProductModal from './ProductModal';
 
 function ProductCard(props) {
+  const [showModal, setShowModal] = useState(false)
+  const handleCloseModal = () => {setShowModal(false)}
+  const handleShowModal = () => setShowModal(true)
     const {item} = props;
     const buttonStyles = {
       width: '100%',
       backgroundColor: 'green',
     };
     const dispatch = useDispatch()
+    const handleAddToCart = () => {dispatch(addToCart(item))}
     const navigate = useNavigate()
     const {currentUser} = useSelector((state) => state.auth)
     const {cart} = useSelector((state) => state.cart)
-    const [showModal, setShowModal] = useState(false);
-
-    const handleShowModal = () => {
-        setShowModal(true);
-    };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-    };
-
   return (
-    <Card className="custom-card" style={{border: '2px solid #28a745'}}>
+    <>
+    
+    <Card onClick={handleShowModal} className="custom-card" style={{border: '2px solid #28a745'}}>
        <Card.Body>
        <Card.Title>{item.title}</Card.Title>
-       <div onClick={handleShowModal} style={{ cursor: 'pointer' }}>
-       <Card.Img variant="top" src={item.image} className="custom-card-img"/>   
-       </div>
+        <Card.Img variant="top" src={item.image} className="custom-card-img"/>   
         <Card.Text>
           {item.description}
         </Card.Text>
@@ -62,17 +56,15 @@ function ProductCard(props) {
             <img src={icon} alt="" className="button-images"/>
           </span>
         </Button>
-        )  
+        )
+           
         )}
+        
+       
       </Card.Body>
-      <ProductModal
-     item={item}
-     showModal={showModal}
-     handleCloseModal={handleCloseModal}
-     currentUser={currentUser}
-    />
     </Card>
-    
+      <ProductModal handleCloseModal={handleCloseModal} currentUser={currentUser} item={item} handleAddToCart={handleAddToCart} showModal={showModal}/>
+    </>
   );
 }
 

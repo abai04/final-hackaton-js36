@@ -69,3 +69,11 @@ export const editYourAccount = createAsyncThunk('auth/editYourAccount', async (e
         throw error
     }
 })
+
+export const registerDeliver = createAsyncThunk("auth/registerDeliver", async(newCourier) => {
+    try {
+        await axios.post(`${API}/account/register_courier/`, newCourier)
+    } catch (error) {
+        throw error
+    }
+})

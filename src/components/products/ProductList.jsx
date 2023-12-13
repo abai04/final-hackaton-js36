@@ -10,6 +10,8 @@ const ProductList = () => {
   const { productList, loading, categories } = useSelector(
     (state) => state.product
   );
+  const [currentPage, setCurrentPage] = useState(1);
+
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('search') || '')
@@ -24,6 +26,7 @@ const ProductList = () => {
   }, [searchParams]);
   const navigate = useNavigate();
   const filterByCategory = (query, value) => {
+    setCurrentPage(1)
     const search = new URLSearchParams(window.location.search);
 
     if (value === "all") {
@@ -31,15 +34,15 @@ const ProductList = () => {
     } else {
       search.set(query, value);
     }
-
+    
     const url = `${window.location.pathname}?${search.toString()}`;
     navigate(url);
   };
   return (
     <div>
-      <div className="d-flex w-50">
+      <div style={{display: "flex", flexWrap: "wrap"}}>
 
-      <Dropdown style={{ marginLeft: "150px" }}>
+      <Dropdown style={{ marginLeft: "25%" }}>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Категория
         </Dropdown.Toggle>
@@ -57,7 +60,7 @@ const ProductList = () => {
           ))}
         </Dropdown.Menu>
       </Dropdown>
-      <Form.Control value={search}
+      <Form.Control style={{width: '500px'}} value={search}
       onChange={(e) => setSearch(e.target.value)}
       placeholder="Search"/>
       </div>
@@ -71,7 +74,7 @@ const ProductList = () => {
         ))}
       </Container>
       <Container>
-        <PaginationList />
+        <PaginationList filterByCategory={filterByCategory} currentPage={currentPage}setCurrentPage={setCurrentPage} />
       </Container>
     </div>
   );

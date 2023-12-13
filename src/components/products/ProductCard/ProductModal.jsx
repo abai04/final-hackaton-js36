@@ -7,6 +7,7 @@ import './ProductModal.css';
 
 const ProductModal = ({ item, showModal, handleCloseModal, currentUser, handleAddToCart }) => {
   return (
+    <div>
     <Modal show={showModal} onHide={handleCloseModal} fullscreen>
       <div style={{ border: '1px solid green', padding: '30px', margin: '20px', backgroundColor: '#fafaf4' }}>
         <Modal.Header closeButton style={{ borderBottom: 'none', textAlign: 'center', border: '1px solid green', fontSize: '46px',}}>
@@ -39,6 +40,7 @@ const ProductModal = ({ item, showModal, handleCloseModal, currentUser, handleAd
         </Modal.Body>
       </div>
     </Modal>
+    </div>
   );
 };
 
