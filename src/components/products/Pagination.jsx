@@ -3,12 +3,12 @@ import { Pagination } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-const PaginationList = () => {
+const PaginationList = (props) => {
+  const {currentPage, setCurrentPage, filterByCategory} = props
   const { pages } = useSelector((state) => state.product);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     setSearchParams({

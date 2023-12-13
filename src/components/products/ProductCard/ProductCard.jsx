@@ -7,20 +7,25 @@ import { useNavigate } from 'react-router-dom';
 import icon from '../image/icun.svg'
 import './ProductCard.css'
 import { addToCart, checkProductInCart, getCart } from '../../../store/slices/cartSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import ProductModal from './ProductModal';
 
 function ProductCard(props) {
+  const [showModal, setShowModal] = useState(false)
+  const handleShowModal = () => setShowModal(true)
+  const handleCloseModal = () => setShowModal(false)
     const {item} = props;
     const buttonStyles = {
       width: '100%',
       backgroundColor: 'green',
     };
     const dispatch = useDispatch()
+    const handleAddToCart = () => {dispatch(addToCart(item))}
     const navigate = useNavigate()
     const {currentUser} = useSelector((state) => state.auth)
     const {cart} = useSelector((state) => state.cart)
   return (
-    <Card className="custom-card" style={{border: '2px solid #28a745'}}>
+    <Card onClick={handleShowModal} className="custom-card" style={{border: '2px solid #28a745'}}>
        <Card.Body>
        <Card.Title>{item.title}</Card.Title>
         <Card.Img variant="top" src={item.image} className="custom-card-img"/>   

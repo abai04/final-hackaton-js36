@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, NavDropdown } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import UserRegister from './UserRegister';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../store/actions/authActions';
 
 function UserLogin(props) {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("") 
   const [password, setPassword] = useState("") 
+  const {error} = useSelector(state => state.auth)
 
   const dispatch = useDispatch()
   const handleClose = () => setShow(false);
@@ -54,6 +55,7 @@ function UserLogin(props) {
     </Form>
         </Modal.Body>
         <Modal.Footer>
+          {error && <p style={{color: "red"}}>Неверный логин или пароль</p>}
           <UserRegister showLogin={show} setShowLogin={setShow}/>
         </Modal.Footer>
       </Modal>
