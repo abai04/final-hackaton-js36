@@ -7,7 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import icon from '../image/icun.svg'
 import './ProductCard.css'
 import { addToCart, checkProductInCart, getCart } from '../../../store/slices/cartSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import ProductModal from './ProductModal';
 
 function ProductCard(props) {
     const {item} = props;
@@ -19,11 +20,23 @@ function ProductCard(props) {
     const navigate = useNavigate()
     const {currentUser} = useSelector((state) => state.auth)
     const {cart} = useSelector((state) => state.cart)
+    const [showModal, setShowModal] = useState(false);
+
+    const handleShowModal = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
   return (
     <Card className="custom-card" style={{border: '2px solid #28a745'}}>
        <Card.Body>
        <Card.Title>{item.title}</Card.Title>
-        <Card.Img variant="top" src={item.image} className="custom-card-img"/>   
+       <div onClick={handleShowModal} style={{ cursor: 'pointer' }}>
+       <Card.Img variant="top" src={item.image} className="custom-card-img"/>   
+       </div>
         <Card.Text>
           {item.description}
         </Card.Text>
@@ -49,13 +62,17 @@ function ProductCard(props) {
             <img src={icon} alt="" className="button-images"/>
           </span>
         </Button>
-        )
-           
+        )  
         )}
-        
-       
       </Card.Body>
+      <ProductModal
+     item={item}
+     showModal={showModal}
+     handleCloseModal={handleCloseModal}
+     currentUser={currentUser}
+    />
     </Card>
+    
   );
 }
 
