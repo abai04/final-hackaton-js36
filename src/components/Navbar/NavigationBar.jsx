@@ -43,7 +43,7 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav.Link className="me-5" onClick={() => navigate("/products")}>
-            Еда
+            Меню
           </Nav.Link>
           <Nav.Link className="me-5" onClick={() => navigate("/job")}>
             Курьерская служба
