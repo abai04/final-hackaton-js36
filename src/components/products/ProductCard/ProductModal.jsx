@@ -5,10 +5,8 @@ import icon from '../image/icun.svg';
 import { ADMIN } from '../../../helpers/consts';
 import './ProductModal.css'; 
 
-const ProductModal = (props) => {
-    const { item, showModal, handleCloseModal, currentUser, handleAddToCart } = props
+const ProductModal = ({ item, showModal, handleCloseModal, currentUser, handleAddToCart }) => {
   return (
-    <div>
     <Modal show={showModal} onHide={handleCloseModal} fullscreen>
       <div style={{ border: '1px solid green', padding: '30px', margin: '20px', backgroundColor: '#fafaf4' }}>
         <Modal.Header closeButton style={{ borderBottom: 'none', textAlign: 'center', border: '1px solid green', fontSize: '46px',}}>
@@ -41,7 +39,6 @@ const ProductModal = (props) => {
         </Modal.Body>
       </div>
     </Modal>
-    </div>
   );
 };
 

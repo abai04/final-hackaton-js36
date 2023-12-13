@@ -12,8 +12,9 @@ import ProductModal from './ProductModal';
 
 function ProductCard(props) {
   const [showModal, setShowModal] = useState(false)
-  const handleShowModal = () => setShowModal(true)
   const handleCloseModal = () => setShowModal(false)
+  const handleShowModal = () => setShowModal(true)
+  console.log(showModal);
     const {item} = props;
     const buttonStyles = {
       width: '100%',
@@ -58,7 +59,7 @@ function ProductCard(props) {
            
         )}
         
-       
+       <ProductModal handleCloseModal={handleCloseModal} currentUser={currentUser} item={item} handleAddToCart={handleAddToCart} showModal={showModal}/>
       </Card.Body>
     </Card>
   );
