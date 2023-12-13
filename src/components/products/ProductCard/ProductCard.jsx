@@ -12,9 +12,8 @@ import ProductModal from './ProductModal';
 
 function ProductCard(props) {
   const [showModal, setShowModal] = useState(false)
-  const handleCloseModal = () => setShowModal(false)
+  const handleCloseModal = () => {setShowModal(false)}
   const handleShowModal = () => setShowModal(true)
-  console.log(showModal);
     const {item} = props;
     const buttonStyles = {
       width: '100%',
@@ -26,6 +25,8 @@ function ProductCard(props) {
     const {currentUser} = useSelector((state) => state.auth)
     const {cart} = useSelector((state) => state.cart)
   return (
+    <>
+    
     <Card onClick={handleShowModal} className="custom-card" style={{border: '2px solid #28a745'}}>
        <Card.Body>
        <Card.Title>{item.title}</Card.Title>
@@ -59,9 +60,11 @@ function ProductCard(props) {
            
         )}
         
-       <ProductModal handleCloseModal={handleCloseModal} currentUser={currentUser} item={item} handleAddToCart={handleAddToCart} showModal={showModal}/>
+       
       </Card.Body>
     </Card>
+      <ProductModal handleCloseModal={handleCloseModal} currentUser={currentUser} item={item} handleAddToCart={handleAddToCart} showModal={showModal}/>
+    </>
   );
 }
 
