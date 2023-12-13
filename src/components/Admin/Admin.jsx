@@ -11,7 +11,8 @@ const Admin = () => {
         </div>
       </Link>
       <Link to={"/categories"} style={{ textDecoration: "none" }}>
-        <div className="block b-2">Добавить категории</div>
+        <div className="block b-2"><p
+        style={{ textShadow: "0px 0px 10px white" }}>Добавить категории</p></div>
       </Link>
     </Container>
   );

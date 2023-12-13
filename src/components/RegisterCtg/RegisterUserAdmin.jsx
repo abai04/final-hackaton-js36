@@ -33,31 +33,7 @@ const RegisterUserAdmin = () => {
             </Link>{" "}
           </button>
         </div>
-        <div className="choice_class">
-          <div className="images_admin">
-            <img src={adminIMG} alt="admin" />
-          </div>
-          <ul className="text_list">
-            <li className="text_title">Администратор</li>
-          </ul>
-          <p className="title_text">
-            Kurultay поможет ускорить рост вашего бизнеса: наши технологии и
-            пользовательская база созданы, чтобы увеличить продажи и открыть для
-            вас новые возможности!
-          </p>
-          <button className="btn_coise-2">
-            <Link
-              style={{
-                textDecoration: "none",
-                color: "white",
-                fontFamily: "system-ui",
-              }}
-              to="/admin"
-            >
-              Зарегистрироваться
-            </Link>
-          </button>
-        </div>
+        
       </div>
     </div>
   );
