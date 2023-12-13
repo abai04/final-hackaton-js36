@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import icon from '../image/icun.svg';
 import { ADMIN } from '../../../helpers/consts';
 import './ProductModal.css'; 
+import { checkProductInCart } from '../../../store/slices/cartSlice';
 
 const ProductModal = ({ item, showModal, handleCloseModal, currentUser, handleAddToCart }) => {
+
+  
+
   return (
     <div>
     <Modal show={showModal} onHide={handleCloseModal} fullscreen>
@@ -22,14 +26,16 @@ const ProductModal = ({ item, showModal, handleCloseModal, currentUser, handleAd
               <p>Описание: {item.description}</p>
               <p>Категория: {item.category}</p>
               {currentUser !== ADMIN && (
+                
                 <Button
-                  className={`button_mod`}
-                  onClick={handleAddToCart} 
+                  className={`button_mod ${checkProductInCart(item.id) ? 'added-to-cart' : ''}`}
+                  onClick={handleAddToCart}
+                  disabled={checkProductInCart(item.id)}
                 >
                   <span className="mr-1">
                     <img src={icon} alt="" className="button-imagess" />
                   </span>
-                  ДОБАВИТЬ В ЗАКАЗ
+                  {checkProductInCart(item.id) ? 'Добавлено в заказ' : 'ДОБАВИТЬ В ЗАКАЗ'}
                   <span className="ml-1">
                     <img src={icon} alt="" className="button-imagess" />
                   </span>
