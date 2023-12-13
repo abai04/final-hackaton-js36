@@ -16,5 +16,10 @@
     background-color: green !important;
   }
 
+  .button_mod.added-to-cart {
+    background-color: #888888; 
+    color: #ffffff;
+  }
+
   
   
