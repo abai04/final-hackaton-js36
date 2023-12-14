@@ -42,7 +42,7 @@ const ProductList = () => {
     <div>
       <div style={{display: "flex", flexWrap: "wrap"}}>
 
-      <Dropdown style={{ marginLeft: "25%" }}>
+      <Dropdown style={{ marginLeft: "25%", marginTop: '2%' }}>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Категория
         </Dropdown.Toggle>
@@ -60,9 +60,9 @@ const ProductList = () => {
           ))}
         </Dropdown.Menu>
       </Dropdown>
-      <Form.Control style={{width: '500px'}} value={search}
+      <Form.Control style={{width: '500px', marginTop: '2%'}} value={search}
       onChange={(e) => setSearch(e.target.value)}
-      placeholder="Search"/>
+      placeholder="Поиск"/>
       </div>
 
       <Container style={{ display: "flex", flexWrap: "wrap" }}>
