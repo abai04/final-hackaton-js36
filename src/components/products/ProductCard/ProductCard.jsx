@@ -27,7 +27,7 @@ function ProductCard(props) {
   return (
     <>
     
-    <Card  className="custom-card" style={{border: '2px solid #28a745'}}>
+    <Card  className="custom-card" style={{border: '2px solid #28a745', marginTop: '25px'}}>
        <Card.Body>
        <Card.Title>{item.title}</Card.Title>
        <div onClick={handleShowModal} style={{ cursor: 'pointer' }}>
